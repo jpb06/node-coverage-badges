@@ -144,6 +144,30 @@ import { generateBadges } from 'node-coverage-badges';
 })();
 ```
 
+### 🔶 Effect
+
+You can also directly import the effect, if you use [Effect](https://effect.website/docs/introduction):
+
+```typescript
+import { generateBadgesEffect } from 'node-coverage-badges';
+
+const task = Effect.gen(function* () {
+  //...
+
+  const result = yield* generateBadgesEffect();
+})
+```
+
+The function signature is the following:
+
+```typescript
+const generateBadgesEffect: (
+  coverageSummaryPath?: string, 
+  outputPath?: string, 
+  logo?: string
+) => Effect.Effect<boolean, FsError | AxiosError, never>
+```
+
 ## ⚡ Thanks
 
 Big thanks to [Shield](https://github.com/badges/shields) for this awesome tool!
