@@ -6,7 +6,7 @@ import {
   writeFile as fsWriteFile,
 } from 'fs-extra';
 
-class FsError {
+export class FsError {
   readonly _tag = 'fs-error';
   readonly message: string;
   readonly stack?: string;
