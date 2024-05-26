@@ -1,12 +1,12 @@
-const importsRegex = '^@(constants|@tests|@types)'
-const importsPattern =  '{@constants,@tests,@types}'
+const importsRegex = '^@(constants|@tests|@types)';
+const importsPattern = '{@constants,@tests,@types}';
 
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
   root: true,
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
   },
   env: {
     browser: true,
@@ -98,23 +98,19 @@ module.exports = {
     {
       files: ['**/*.md'],
       plugins: ['markdown'],
-      extends: ['plugin:markdown/recommended', 'prettier'],
+      extends: ['plugin:markdown/recommended-legacy', 'prettier'],
     },
 
     // Vitest
     {
       files: ['**/*.test.ts', '**/*.spec.ts'],
       plugins: ['eslint-plugin-vitest'],
-      extends: [
-        'plugin:vitest/recommended',
-      ],
+      extends: ['plugin:vitest/legacy-recommended'],
     },
 
     // Node
     {
-      files: [
-        '.eslintrc.js',
-      ],
+      files: ['.eslintrc.js'],
       env: {
         node: true,
       },
