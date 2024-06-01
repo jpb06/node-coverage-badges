@@ -15,7 +15,7 @@
   "dependencies": {
     "axios": "^1.7.2",
     "chalk": "<5",
-    "effect": "3.2.5",
+    "effect": "3.2.7",
     "fs-extra": "^11.1.0",
     "ts-pattern": "^5.1.2",
     "yargs": "^17.6.2"
@@ -23,10 +23,10 @@
   "devDependencies": {
     "@stylistic/eslint-plugin": "^2.1.0",
     "@types/fs-extra": "^11.0.1",
-    "@types/node": "^20.12.12",
+    "@types/node": "^20.13.0",
     "@types/yargs": "^17.0.20",
-    "@typescript-eslint/eslint-plugin": "^7.10.0",
-    "@typescript-eslint/parser": "^7.10.0",
+    "@typescript-eslint/eslint-plugin": "^7.11.0",
+    "@typescript-eslint/parser": "^7.11.0",
     "@vitest/coverage-v8": "^1.6.0",
     "copyfiles": "^2.4.1",
     "del-cli": "^5.0.0",
