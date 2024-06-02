@@ -1,5 +1,5 @@
 import { Effect } from 'effect';
-import { emptyDir, ensureDir, readJson } from 'fs-extra';
+import { readdir, ensureDir, readJson, rm } from 'fs-extra';
 import { describe, it, beforeEach, expect, vi } from 'vitest';
 
 import { defaultIcon, defaultOutputDir, defaultSummaryPath } from '@constants';
@@ -10,8 +10,9 @@ import { generateCoverageFile } from './generateCoverageFile.logic';
 
 vi.mock('fs-extra', () => ({
   readJson: vi.fn(),
-  emptyDir: vi.fn(),
   ensureDir: vi.fn(),
+  readdir: vi.fn(),
+  rm: vi.fn(),
 }));
 vi.mock('./generateCoverageFile.logic', () => ({
   generateCoverageFile: vi.fn(),
@@ -22,8 +23,11 @@ describe('generateBadges function', () => {
     error: vi.fn(),
   });
 
-  vi.mocked(emptyDir).mockImplementation(() => Promise.resolve());
-  vi.mocked(ensureDir).mockImplementation(() => Promise.resolve());
+  beforeEach(() => {
+    vi.mocked(readdir).mockImplementation(() => Promise.resolve([]));
+    vi.mocked(ensureDir).mockImplementation(() => Promise.resolve());
+    vi.mocked(rm).mockImplementation(() => Promise.resolve());
+  });
 
   const generateCoverageFileCurry = vi
     .fn()
@@ -39,12 +43,17 @@ describe('generateBadges function', () => {
   });
 
   it('should ensure outDir is there and clear it', async () => {
+    vi.mocked(readdir).mockResolvedValueOnce([
+      'one.svg',
+      'apps/front/cool.svg',
+    ] as never);
     vi.mocked(readJson).mockImplementation(() => Promise.resolve());
 
     await generateBadges(defaultSummaryPath, defaultOutputDir, defaultIcon);
 
     expect(ensureDir).toHaveBeenCalledTimes(1);
-    expect(emptyDir).toHaveBeenCalledTimes(1);
+    expect(readdir).toHaveBeenCalledTimes(1);
+    expect(rm).toHaveBeenCalledTimes(2);
   });
 
   it('should generate all badges', async () => {
