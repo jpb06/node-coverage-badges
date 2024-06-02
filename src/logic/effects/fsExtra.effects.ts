@@ -1,4 +1,5 @@
 import { Effect } from 'effect';
+import { TaggedError } from 'effect/Data';
 import {
   ensureDir as fsEnsureDir,
   emptyDir as fsEmptyDir,
@@ -6,37 +7,31 @@ import {
   writeFile as fsWriteFile,
 } from 'fs-extra';
 
-export class FsError {
-  readonly _tag = 'fs-error';
-  readonly message: string;
-  readonly stack?: string;
-
-  constructor(e: unknown) {
-    this.message = e instanceof Error ? e.message : String(e);
-    this.stack = e instanceof Error ? e.stack : '';
-  }
-}
+export class FsError extends TaggedError('fs-error')<{
+  cause?: unknown;
+  message?: string;
+}> {}
 
 export const ensureDir = (path: string) =>
   Effect.tryPromise({
     try: () => fsEnsureDir(path),
-    catch: (e) => new FsError(e),
+    catch: (e) => new FsError({ cause: e }),
   });
 
 export const emptyDir = (path: string) =>
   Effect.tryPromise({
     try: () => fsEmptyDir(path),
-    catch: (e) => new FsError(e),
+    catch: (e) => new FsError({ cause: e }),
   });
 
 export const readJson = <TResult>(path: string) =>
   Effect.tryPromise({
     try: () => fsReadJson(path) as Promise<TResult>,
-    catch: (e) => new FsError(e),
+    catch: (e) => new FsError({ cause: e }),
   });
 
 export const writeFile = (path: string, data: string) =>
   Effect.tryPromise({
     try: () => fsWriteFile(path, data, { encoding: 'utf8' }),
-    catch: (e) => new FsError(e),
+    catch: (e) => new FsError({ cause: e }),
   });
