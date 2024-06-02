@@ -1,23 +1,21 @@
 import axios from 'axios';
 import { Effect, pipe } from 'effect';
+import { TaggedError } from 'effect/Data';
 
-export class AxiosError {
-  readonly _tag = 'axios-error';
-  readonly message: string;
-  readonly stack?: string;
-
-  constructor(e: unknown, additionalMessage?: string) {
-    this.message =
-      e instanceof Error ? `${additionalMessage}\n${e.message}` : String(e);
-    this.stack = e instanceof Error ? e.stack : '';
-  }
-}
+export class AxiosError extends TaggedError('axios-error')<{
+  cause?: unknown;
+  message?: string;
+}> {}
 
 export const download = (url: string) =>
   pipe(
     Effect.tryPromise({
       try: () => axios.get<string>(url),
-      catch: (e) => new AxiosError(e, `Unable to retrieve data from ${url}`),
+      catch: (e) =>
+        new AxiosError({
+          cause: e,
+          message: `Unable to retrieve data from ${url}`,
+        }),
     }),
     Effect.map((response) => response.data),
   );
