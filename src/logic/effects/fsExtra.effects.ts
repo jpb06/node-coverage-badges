@@ -2,9 +2,10 @@ import { Effect } from 'effect';
 import { TaggedError } from 'effect/Data';
 import {
   ensureDir as fsEnsureDir,
-  emptyDir as fsEmptyDir,
   readJson as fsReadJson,
   writeFile as fsWriteFile,
+  readdir as fsReadDir,
+  rm as fsRm,
 } from 'fs-extra';
 
 export class FsError extends TaggedError('fs-error')<{
@@ -18,10 +19,27 @@ export const ensureDir = (path: string) =>
     catch: (e) => new FsError({ cause: e }),
   });
 
-export const emptyDir = (path: string) =>
+export const readDir = (path: string) =>
   Effect.tryPromise({
-    try: () => fsEmptyDir(path),
+    try: () => fsReadDir(path),
     catch: (e) => new FsError({ cause: e }),
+  });
+
+export const rm = (path: string) =>
+  Effect.tryPromise({
+    try: () => fsRm(path),
+    catch: (e) => new FsError({ cause: e }),
+  });
+
+export const removeFiles = (path: string, extension: string) =>
+  Effect.gen(function* () {
+    const files = yield* readDir(path);
+
+    const removeEffects = files
+      .filter((file) => file.endsWith(extension))
+      .map((file) => rm(file));
+
+    return yield* Effect.all(removeEffects, { concurrency: 'unbounded' });
   });
 
 export const readJson = <TResult>(path: string) =>
