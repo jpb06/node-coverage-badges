@@ -17,7 +17,7 @@ export const generateBadgesEffect = (
   logo = defaultIcon,
 ) =>
   pipe(
-    Effect.all([removeFiles(outputPath, '.svg'), ensureDir(outputPath)]),
+    Effect.all([ensureDir(outputPath), removeFiles(outputPath, '.svg')]),
     Effect.flatMap(() =>
       readJson<CoverageSummaryFileContent>(coverageSummaryPath),
     ),
