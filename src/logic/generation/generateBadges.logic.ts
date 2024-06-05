@@ -28,6 +28,7 @@ export const generateBadgesEffect = (
       ),
     ),
     Effect.map(() => true),
+    Effect.withSpan('generateBadgesEffect'),
   );
 
 export const generateBadges = async (

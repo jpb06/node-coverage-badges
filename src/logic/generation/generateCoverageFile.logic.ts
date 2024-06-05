@@ -1,6 +1,6 @@
 import { join } from 'path';
 
-import { Effect } from 'effect';
+import { Effect, pipe } from 'effect';
 
 import { CoverageSummaryFileContent, CoverageKeys } from '@types';
 
@@ -11,18 +11,21 @@ import { writeFile } from '@logic/effects/fsExtra.effects';
 export const generateCoverageFile =
   (summary: CoverageSummaryFileContent, outputPath: string, logo: string) =>
   (key: CoverageKeys) =>
-    Effect.gen(function* (_) {
-      const badgeUrl = getBadgeUrl(summary, key, logo);
-      if (!badgeUrl) {
-        console.error(`generateCoverageFile: missing badgeUrl for ${key}`);
-        return;
-      }
+    pipe(
+      Effect.gen(function* (_) {
+        const badgeUrl = getBadgeUrl(summary, key, logo);
+        if (!badgeUrl) {
+          console.error(`generateCoverageFile: missing badgeUrl for ${key}`);
+          return;
+        }
 
-      const path = join(outputPath, `coverage-${key}.svg`);
-      const file = yield* _(download(badgeUrl));
-      if (file.length > 0) {
-        yield* _(writeFile(path, file));
-      } else {
-        console.error(`generateCoverageFile: no file to write for ${key}`);
-      }
-    });
+        const path = join(outputPath, `coverage-${key}.svg`);
+        const file = yield* _(download(badgeUrl));
+        if (file.length > 0) {
+          yield* _(writeFile(path, file));
+        } else {
+          console.error(`generateCoverageFile: no file to write for ${key}`);
+        }
+      }),
+      Effect.withSpan('generateCoverageFile'),
+    );
