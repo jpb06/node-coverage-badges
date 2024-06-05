@@ -72,7 +72,7 @@ describe('generateBadges function', () => {
 
     await expect(
       generateBadges(defaultSummaryPath, defaultOutputDir, defaultIcon),
-    ).rejects.toThrowError('fs-error');
+    ).rejects.toThrow('An error has occurred');
 
     expect(readJson).toHaveBeenCalledTimes(1);
     expect(generateCoverageFile).toHaveBeenCalledTimes(0);
