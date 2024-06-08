@@ -18,5 +18,5 @@ export const download = (url: string) =>
         }),
     }),
     Effect.map((response) => response.data),
-    Effect.withSpan('download'),
+    Effect.withSpan('download', { attributes: { url } }),
   );

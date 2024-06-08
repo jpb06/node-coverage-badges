@@ -27,5 +27,12 @@ export const generateCoverageFile =
           console.error(`generateCoverageFile: no file to write for ${key}`);
         }
       }),
-      Effect.withSpan('generateCoverageFile'),
+      Effect.withSpan('generateCoverageFile', {
+        attributes: {
+          summary,
+          outputPath,
+          logo,
+          key,
+        },
+      }),
     );

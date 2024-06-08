@@ -19,7 +19,7 @@ export const ensureDir = (path: string) =>
       try: () => fsEnsureDir(path),
       catch: (e) => new FsError({ cause: e }),
     }),
-    Effect.withSpan('ensureDir'),
+    Effect.withSpan('ensureDir', { attributes: { path } }),
   );
 
 export const readDir = (path: string) =>
@@ -28,7 +28,7 @@ export const readDir = (path: string) =>
       try: () => fsReadDir(path),
       catch: (e) => new FsError({ cause: e }),
     }),
-    Effect.withSpan('readDir'),
+    Effect.withSpan('readDir', { attributes: { path } }),
   );
 
 export const rm = (path: string) =>
@@ -37,7 +37,7 @@ export const rm = (path: string) =>
       try: () => fsRm(path),
       catch: (e) => new FsError({ cause: e }),
     }),
-    Effect.withSpan('rm'),
+    Effect.withSpan('rm', { attributes: { path } }),
   );
 
 export const removeFiles = (path: string, extension: string) =>
@@ -51,7 +51,7 @@ export const removeFiles = (path: string, extension: string) =>
 
       return yield* Effect.all(removeEffects, { concurrency: 'unbounded' });
     }),
-    Effect.withSpan('removeFiles'),
+    Effect.withSpan('removeFiles', { attributes: { path, extension } }),
   );
 
 export const readJson = <TResult>(path: string) =>
@@ -60,7 +60,7 @@ export const readJson = <TResult>(path: string) =>
       try: () => fsReadJson(path) as Promise<TResult>,
       catch: (e) => new FsError({ cause: e }),
     }),
-    Effect.withSpan('readJson'),
+    Effect.withSpan('readJson', { attributes: { path } }),
   );
 
 export const writeFile = (path: string, data: string) =>
@@ -69,5 +69,5 @@ export const writeFile = (path: string, data: string) =>
       try: () => fsWriteFile(path, data, { encoding: 'utf8' }),
       catch: (e) => new FsError({ cause: e }),
     }),
-    Effect.withSpan('writeFile'),
+    Effect.withSpan('writeFile', { attributes: { path, data } }),
   );
