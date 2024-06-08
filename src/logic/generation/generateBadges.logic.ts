@@ -28,7 +28,9 @@ export const generateBadgesEffect = (
       ),
     ),
     Effect.map(() => true),
-    Effect.withSpan('generateBadgesEffect'),
+    Effect.withSpan('generateBadgesEffect', {
+      attributes: { coverageSummaryPath, outputPath, logo },
+    }),
   );
 
 export const generateBadges = async (
