@@ -1,5 +1,5 @@
 import { summaryKeys } from '@constants';
-import { CoverageSummaryFileContent, CoverageKeys } from '@types';
+import { CoverageSummaryFileContent, CoverageKeysWithTotal } from '@types';
 
 const getTotalPercentage = (summary: CoverageSummaryFileContent): number => {
   const result =
@@ -12,7 +12,7 @@ const getTotalPercentage = (summary: CoverageSummaryFileContent): number => {
 
 export const getPercentage = (
   summary: CoverageSummaryFileContent,
-  key: CoverageKeys,
+  key: CoverageKeysWithTotal,
 ): number | undefined => {
   if (key === 'total') {
     return getTotalPercentage(summary);

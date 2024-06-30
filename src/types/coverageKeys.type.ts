@@ -1,5 +1,4 @@
 export const coverageKeysArray = [
-  'total',
   'lines',
   'statements',
   'functions',
@@ -7,4 +6,5 @@ export const coverageKeysArray = [
 ] as const;
 
 export type CoverageKeys = (typeof coverageKeysArray)[number];
+export type CoverageKeysWithTotal = CoverageKeys | 'total';
 export type TotalCoverageKey = (typeof coverageKeysArray)[0];

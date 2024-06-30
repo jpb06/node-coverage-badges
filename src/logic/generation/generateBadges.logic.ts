@@ -23,7 +23,9 @@ export const generateBadgesEffect = (
     ),
     Effect.flatMap((summary) =>
       Effect.all(
-        coverageKeysArray.map(generateCoverageFile(summary, outputPath, logo)),
+        [...coverageKeysArray, 'total' as const].map(
+          generateCoverageFile(summary, outputPath, logo),
+        ),
         { concurrency: 'unbounded' },
       ),
     ),
