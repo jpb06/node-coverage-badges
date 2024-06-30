@@ -5,13 +5,11 @@ export const coverageSummaryFileContentMock = (
   statementsPct?: number,
   branchesPct?: number,
   functionsPct?: number,
-  totalPct?: number,
 ): CoverageSummaryFileContent => ({
   total: {
     lines: { pct: linesPct } as FileCoverageTotal,
     statements: { pct: statementsPct } as FileCoverageTotal,
     branches: { pct: branchesPct } as FileCoverageTotal,
     functions: { pct: functionsPct } as FileCoverageTotal,
-    total: { pct: totalPct } as FileCoverageTotal,
   },
 });

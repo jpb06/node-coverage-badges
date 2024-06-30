@@ -2,7 +2,7 @@ import { join } from 'path';
 
 import { Effect, pipe } from 'effect';
 
-import { CoverageSummaryFileContent, CoverageKeys } from '@types';
+import { CoverageSummaryFileContent, CoverageKeysWithTotal } from '@types';
 
 import { getBadgeUrl } from '@logic/badges/badgeUrl.logic';
 import { download } from '@logic/effects/download.effect';
@@ -10,7 +10,7 @@ import { writeFile } from '@logic/effects/fsExtra.effects';
 
 export const generateCoverageFile =
   (summary: CoverageSummaryFileContent, outputPath: string, logo: string) =>
-  (key: CoverageKeys) =>
+  (key: CoverageKeysWithTotal) =>
     pipe(
       Effect.gen(function* (_) {
         const badgeUrl = getBadgeUrl(summary, key, logo);
