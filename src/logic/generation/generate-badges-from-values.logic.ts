@@ -61,5 +61,12 @@ export const generateBadgesFromValues = async (
           ConsoleLive,
         ),
       ),
+      Effect.withSpan('generate-badges-from-values', {
+        attributes: {
+          summaryValues,
+          outputPath,
+          logo,
+        },
+      }),
     ),
   );

@@ -32,5 +32,6 @@ runPromise(
     Effect.provide(
       Layer.mergeAll(NodeFileSystem.layer, FetchHttpClient.layer, ConsoleLive),
     ),
+    Effect.withSpan('generate-badges-cli'),
   ),
 );

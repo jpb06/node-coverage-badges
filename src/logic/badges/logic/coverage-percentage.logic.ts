@@ -1,6 +1,6 @@
 import { summaryKeys } from '@constants';
 import type { CoverageKeysWithTotal, CoverageSummaryFileContent } from '@types';
-import { Effect } from 'effect';
+import { Effect, pipe } from 'effect';
 
 import { Console } from '@effects/console';
 
@@ -17,16 +17,24 @@ export const getPercentage = (
   summary: CoverageSummaryFileContent,
   key: CoverageKeysWithTotal,
 ) =>
-  Effect.gen(function* () {
-    if (key === 'total') {
-      return getTotalPercentage(summary);
-    }
+  pipe(
+    Effect.gen(function* () {
+      if (key === 'total') {
+        return getTotalPercentage(summary);
+      }
 
-    const value = summary.total[key].pct;
-    if (value === undefined) {
-      const { info } = yield* Console;
+      const value = summary.total[key].pct;
+      if (value === undefined) {
+        const { info } = yield* Console;
 
-      info(`No value for key '${key}' found in coverage report`);
-    }
-    return value;
-  });
+        info(`No value for key '${key}' found in coverage report`);
+      }
+      return value;
+    }),
+    Effect.withSpan('get-percentage', {
+      attributes: {
+        summary,
+        key,
+      },
+    }),
+  );

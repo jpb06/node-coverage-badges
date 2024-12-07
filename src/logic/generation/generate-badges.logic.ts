@@ -54,5 +54,12 @@ export const generateBadges = async (
           ConsoleLive,
         ),
       ),
+      Effect.withSpan('generate-badges', {
+        attributes: {
+          coverageSummaryPath,
+          outputPath,
+          logo,
+        },
+      }),
     ),
   );
