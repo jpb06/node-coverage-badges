@@ -1,6 +1,7 @@
+import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
-import tsconfigPaths from 'vite-tsconfig-paths'
 
+// biome-ignore lint/style/noDefaultExport: <explanation>
 export default defineConfig({
   plugins: [tsconfigPaths()],
   test: {
@@ -10,9 +11,10 @@ export default defineConfig({
       include: ['src/**/*.ts'],
       exclude: [
         'src/**/*.type.ts',
-        'src/index.ts',
+        'src/**/index.ts',
         'src/types/**/*',
         'src/tests/**/*',
+        'src/temp/**/*',
       ],
     },
   },
