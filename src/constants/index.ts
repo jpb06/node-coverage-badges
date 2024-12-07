@@ -1,3 +1,3 @@
-export * from './fileSystem.constants';
-export * from './summaryKeys.constant';
-export * from './defaultIcon.constant';
+export * from './file-system.constants.js';
+export * from './summary-keys.constant.js';
+export * from './default-icon.constant.js';

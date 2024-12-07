@@ -1,11 +1,12 @@
-import chalk from 'chalk';
-import { pathExistsSync } from 'fs-extra';
+import { existsSync } from 'node:fs';
+
+import colors from 'picocolors';
 import { hideBin } from 'yargs/helpers';
 import yargs from 'yargs/yargs';
 
-import { defaultOutputDir, defaultSummaryPath, defaultIcon } from '@constants';
+import { defaultIcon, defaultOutputDir, defaultSummaryPath } from '@constants';
 
-import { GenerateBadgesArguments } from '../types/args.type';
+import type { GenerateBadgesArguments } from '../types/args.type.js';
 
 interface CliArguments {
   c: string;
@@ -17,24 +18,26 @@ export const validateArguments = (): GenerateBadgesArguments => {
   const argv = yargs(hideBin(process.argv))
     .scriptName('generateBadges')
     .usage(
-      chalk.blueBright(
+      colors.blueBright(
         '$0 -c [coverageJsonSummaryPath] -o [outputPath] -l [logo]',
       ),
     )
     .epilogue('Generates badges from a coverage report')
     .example('$0 -c ./coverage/coverage-summary.json -o ./badges -l vitest', '')
-    .describe('c', chalk.cyanBright('coverage file path'))
-    .describe('o', chalk.cyanBright('output path'))
-    .describe('l', chalk.cyanBright('vitest'))
+    .describe('c', colors.cyanBright('coverage file path'))
+    .describe('o', colors.cyanBright('output path'))
+    .describe('l', colors.cyanBright('vitest'))
     .default('c', defaultSummaryPath)
     .default('o', defaultOutputDir)
     .default('l', defaultIcon, '<default icon>')
     .check((args) => {
-      const coverageFileExists = pathExistsSync(args.c);
+      const coverageFileExists = existsSync(args.c);
       if (!coverageFileExists) {
         throw new Error(
-          chalk.bold.redBright(
-            `Errors:\n-c\t\tCoverage file ${args.c} doesn't exist\n`,
+          colors.bold(
+            colors.redBright(
+              `Errors:\n-c\t\tCoverage file ${args.c} doesn't exist\n`,
+            ),
           ),
         );
       }

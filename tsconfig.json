@@ -1,30 +1,54 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "lib": ["ES2020"],
-    "baseUrl": "./src",
-    "outDir": "./dist",
-    "moduleResolution": "node",
-    "strict": true,
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "isolatedModules": true,
-    "removeComments": false,
-    "preserveConstEnums": true,
-    "sourceMap": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "paths": {
-      "@constants": ["./constants/index"],
-      "@logic/*": ["./logic/*"],
-      "@tests": ["./tests/index"],
-      "@types": ["./types/index"]
-    }
-  },
-  "include": ["src"]
+	"exclude": ["node_modules", "dist", "./vite.config.mts"],
+	"compilerOptions": {
+		// Enable latest features
+		"lib": ["ES2023", "ES2023.Array", "DOM", "DOM.Iterable"],
+		"types": ["node"],
+		"target": "ESNext",
+		"module": "NodeNext",
+		"moduleDetection": "force",
+		"allowJs": false,
+		"incremental": false,
+		"composite": false,
+
+		"moduleResolution": "NodeNext",
+		"noEmit": true,
+
+		// Best practices
+		"strict": true,
+		"skipLibCheck": true,
+		"noFallthroughCasesInSwitch": true,
+		"downlevelIteration": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noImplicitReturns": false,
+		"noUnusedLocals": true,
+		"noUnusedParameters": false,
+		"noEmitOnError": false,
+		"noErrorTruncation": false,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"noUncheckedIndexedAccess": false,
+		"strictNullChecks": true,
+		"exactOptionalPropertyTypes": true,
+		"noPropertyAccessFromIndexSignature": true,
+
+		// alias
+		"rootDir": "./src",
+		"paths": {
+			"@constants": ["./src/constants/index.ts"],
+			"@effects/console": ["./src/effects/console/index.ts"],
+			"@effects/fetch": ["./src/effects/download/index.ts"],
+			"@effects/fs/*": ["./src/effects/fs/*"],
+			"@tests/layers": ["./src/tests/layers/index.ts"],
+			"@tests/mocks": ["./src/tests/mocks/index.ts"],
+			"@tests/mock-data": ["./src/tests/data/index.ts"],
+			"@tests/spies": ["./src/tests/spies/index.ts"],
+			"@tests": ["./src/tests/index.ts"],
+			"@types": ["./src/types/index.ts"]
+		}
+	}
 }

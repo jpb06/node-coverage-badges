@@ -1,0 +1,17 @@
+{
+	"extends": "./tsconfig",
+	"compilerOptions": {
+		"module": "CommonJS",
+		"moduleResolution": "Node",
+		"outDir": "dist/cjs",
+		"noEmit": false,
+		"declaration": false,
+		"sourceMap": true
+	},
+	"exclude": [
+		"src/**/*.test.ts",
+		"src/tests/**",
+		"src/temp/**",
+		"./vite.config.mts"
+	]
+}
