@@ -53,22 +53,22 @@
     "sync-icons": "bun generateReadmeIcons -h 50"
   },
   "dependencies": {
-    "@effect/platform": "^0.70.4",
+    "@effect/platform": "^0.72.0",
     "comment-json": "^4.2.5",
-    "effect": "3.11.3",
+    "effect": "3.12.0",
     "picocolors": "^1.1.1",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@types/node": "^22.10.1",
+    "@types/node": "^22.10.2",
     "@types/yargs": "^17.0.33",
     "@vitest/coverage-v8": "^2.1.8",
     "copyfiles": "^2.4.1",
     "del-cli": "^6.0.0",
-    "effect-errors": "^1.7.39",
+    "effect-errors": "^1.8.4",
     "readme-package-icons": "^1.1.16",
-    "ts-paths-resolver": "^1.2.7",
+    "ts-paths-resolver": "^1.2.13",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "vite-tsconfig-paths": "^5.1.4",
