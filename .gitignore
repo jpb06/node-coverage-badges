@@ -39,3 +39,4 @@ node_modules/
 # custom
 dist/
 src/temp
+src/tests/mock-data/frozen-dist
