@@ -56,7 +56,7 @@
   "dependencies": {
     "@effect/platform": "^0.72.0",
     "comment-json": "^4.2.5",
-    "effect": "3.12.0",
+    "effect": "3.12.4",
     "picocolors": "^1.1.1",
     "yargs": "^17.7.2"
   },
