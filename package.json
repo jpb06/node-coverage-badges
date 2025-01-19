@@ -9,7 +9,7 @@
     "generateBadgesEsm": "./esm/cli/generate-badges.cli.js"
   },
   "engines": {
-    "node": "22.x"
+    "node": ">=20.x"
   },
   "license": "MIT",
   "type": "module",
