@@ -5,7 +5,7 @@ import { readJsonEffect } from '@effects/fs/read-json/index.js';
 import { removeFilesEffect } from '@effects/fs/remove-files/index.js';
 import { type CoverageSummaryFileContent, coverageKeysArray } from '@types';
 
-import { generateCoverageFile } from './coverage-file/generate-coverage-file.logic.js';
+import { generateCoverageFile } from '../coverage-file/generate-coverage-file.logic.js';
 
 export const generateBadgesEffect = (
   coverageSummaryPath: string,

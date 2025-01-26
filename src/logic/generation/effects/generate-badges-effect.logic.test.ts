@@ -10,10 +10,10 @@ import {
   makeHttpClientTestLayer,
 } from '@tests/layers';
 
-import { generateCoverageFile } from './coverage-file/generate-coverage-file.logic.js';
+import { generateCoverageFile } from './../coverage-file/generate-coverage-file.logic.js';
 import { generateBadgesEffect } from './generate-badges-effect.logic.js';
 
-vi.mock('./coverage-file/generate-coverage-file.logic', () => ({
+vi.mock('./../coverage-file/generate-coverage-file.logic', () => ({
   generateCoverageFile: vi.fn(),
 }));
 
