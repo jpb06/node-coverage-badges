@@ -4,12 +4,7 @@ import { Effect, Layer, pipe } from 'effect';
 
 import { defaultIcon, defaultOutputDir, defaultSummaryPath } from '@constants';
 import { ConsoleLive } from '@effects/console';
-import { ensureDirEffect } from '@effects/fs/ensure-dir/index.js';
-import { readJsonEffect } from '@effects/fs/read-json/index.js';
-import { removeFilesEffect } from '@effects/fs/remove-files/index.js';
-import { type CoverageSummaryFileContent, coverageKeysArray } from '@types';
-
-import { generateCoverageFile } from './coverage-file/generate-coverage-file.logic.js';
+import { generateBadgesEffect as program } from './generate-badges-effect.logic.js';
 
 export const generateBadgesEffect = (
   coverageSummaryPath = defaultSummaryPath,
@@ -17,25 +12,11 @@ export const generateBadgesEffect = (
   logo = defaultIcon,
 ) =>
   pipe(
-    Effect.all([
-      ensureDirEffect(outputPath),
-      removeFilesEffect(outputPath, '.svg'),
-    ]),
-    Effect.flatMap(() =>
-      readJsonEffect<CoverageSummaryFileContent>(coverageSummaryPath),
+    program(coverageSummaryPath, outputPath, logo),
+    Effect.scoped,
+    Effect.provide(
+      Layer.mergeAll(NodeFileSystem.layer, FetchHttpClient.layer, ConsoleLive),
     ),
-    Effect.flatMap((summary) =>
-      Effect.all(
-        [...coverageKeysArray, 'total' as const].map(
-          generateCoverageFile(summary, outputPath, logo),
-        ),
-        { concurrency: 'unbounded' },
-      ),
-    ),
-    Effect.map(() => true),
-    Effect.withSpan('generateBadgesEffect', {
-      attributes: { coverageSummaryPath, outputPath, logo },
-    }),
   );
 
 export const generateBadges = async (
@@ -45,7 +26,7 @@ export const generateBadges = async (
 ) =>
   Effect.runPromise(
     pipe(
-      generateBadgesEffect(coverageSummaryPath, outputPath, logo),
+      program(coverageSummaryPath, outputPath, logo),
       Effect.scoped,
       Effect.provide(
         Layer.mergeAll(
@@ -54,12 +35,5 @@ export const generateBadges = async (
           ConsoleLive,
         ),
       ),
-      Effect.withSpan('generate-badges', {
-        attributes: {
-          coverageSummaryPath,
-          outputPath,
-          logo,
-        },
-      }),
     ),
   );
