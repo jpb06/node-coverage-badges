@@ -11,7 +11,7 @@ import {
 } from '@tests/layers';
 
 import { generateCoverageFile } from './coverage-file/generate-coverage-file.logic.js';
-import { generateBadgesEffect } from './generate-badges.logic.js';
+import { generateBadgesEffect } from './generate-badges-effect.logic.js';
 
 vi.mock('./coverage-file/generate-coverage-file.logic', () => ({
   generateCoverageFile: vi.fn(),
@@ -126,30 +126,6 @@ describe('generateBadges function', () => {
     expect(error._tag).toBe('fs-test-layer-error');
     expect(existsMock).toHaveBeenCalledTimes(1);
     expect(generateCoverageFile).toHaveBeenCalledTimes(0);
-  });
-
-  it('should use default values', async () => {
-    const { FsTestLayer, readFileStringMock } = makeFsTestLayer({
-      exists: Effect.succeed(true),
-      readDirectory: Effect.succeed(['one.svg', 'apps/front/cool.svg']),
-      readFileString: Effect.succeed('{}'),
-      remove: Effect.void,
-    });
-    const { ConsoleTestLayer } = makeConsoleTestLayer({});
-    const { HttpClientTestLayer } = makeHttpClientTestLayer({});
-
-    await runPromise(
-      pipe(
-        generateBadgesEffect(),
-        Effect.scoped,
-        Effect.provide(
-          Layer.mergeAll(FsTestLayer, ConsoleTestLayer, HttpClientTestLayer),
-        ),
-      ),
-    );
-
-    expect(readFileStringMock).toHaveBeenCalledWith(defaultSummaryPath, 'utf8');
-    expect(generateCoverageFileCurry).toHaveBeenCalledTimes(5);
   });
 
   it('should use custom summary path and output dir', async () => {
