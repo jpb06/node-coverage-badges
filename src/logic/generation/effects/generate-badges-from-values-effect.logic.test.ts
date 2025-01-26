@@ -9,13 +9,13 @@ import {
   makeHttpClientTestLayer,
 } from '@tests/layers';
 
-import { generateCoverageFile } from './coverage-file/generate-coverage-file.logic.js';
+import { generateCoverageFile } from '../coverage-file/generate-coverage-file.logic.js';
 import {
   type CoverageSummaryValue,
   generateBadgesFromValuesEffect,
-} from './generate-badges-from-values.logic.js';
+} from './generate-badges-from-values-effect.logic.js';
 
-vi.mock('./coverage-file/generate-coverage-file.logic.js', () => ({
+vi.mock('./../coverage-file/generate-coverage-file.logic.js', () => ({
   generateCoverageFile: vi.fn(),
 }));
 

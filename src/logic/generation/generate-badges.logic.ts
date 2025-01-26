@@ -4,7 +4,8 @@ import { Effect, Layer, pipe } from 'effect';
 
 import { defaultIcon, defaultOutputDir, defaultSummaryPath } from '@constants';
 import { ConsoleLive } from '@effects/console';
-import { generateBadgesEffect as program } from './generate-badges-effect.logic.js';
+
+import { generateBadgesEffect as program } from './effects/generate-badges-effect.logic.js';
 
 export const generateBadgesEffect = (
   coverageSummaryPath = defaultSummaryPath,
@@ -25,15 +26,5 @@ export const generateBadges = async (
   logo = defaultIcon,
 ) =>
   Effect.runPromise(
-    pipe(
-      program(coverageSummaryPath, outputPath, logo),
-      Effect.scoped,
-      Effect.provide(
-        Layer.mergeAll(
-          NodeFileSystem.layer,
-          FetchHttpClient.layer,
-          ConsoleLive,
-        ),
-      ),
-    ),
+    generateBadgesEffect(coverageSummaryPath, outputPath, logo),
   );

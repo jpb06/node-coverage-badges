@@ -15,6 +15,8 @@ export default defineConfig({
         'src/types/**/*',
         'src/tests/**/*',
         'src/temp/**/*',
+        'src/logic/generation/generate-badges-from-values.logic.ts',
+        'src/logic/generation/generate-badges.logic.ts',
       ],
     },
   },
