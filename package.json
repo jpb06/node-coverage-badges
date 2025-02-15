@@ -54,9 +54,9 @@
     "sync-icons": "bun generateReadmeIcons -h 50"
   },
   "dependencies": {
-    "@effect/platform": "0.75.1",
+    "@effect/platform": "0.77.1",
     "comment-json": "4.2.5",
-    "effect": "3.12.7",
+    "effect": "3.13.1",
     "picocolors": "1.1.1",
     "yargs": "17.7.2"
   },
@@ -66,10 +66,10 @@
     "@types/yargs": "17.0.33",
     "@vitest/coverage-v8": "3.0.4",
     "copyfiles": "2.4.1",
-    "effect-errors": "1.8.23",
+    "effect-errors": "1.8.36",
     "npm-check-updates": "17.1.14",
     "readme-package-icons": "1.1.16",
-    "ts-paths-resolver": "1.2.23",
+    "ts-paths-resolver": "1.2.31",
     "tsx": "4.19.2",
     "typescript": "5.7.3",
     "vite-tsconfig-paths": "5.1.4",
