@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.13](https://github.com/jpb06/node-coverage-badges/compare/v1.2.12...v1.2.13) (2025-02-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency effect to v3.13.2 ([#43](https://github.com/jpb06/node-coverage-badges/issues/43)) ([b4c02ff](https://github.com/jpb06/node-coverage-badges/commit/b4c02ff681e1fb7a9cadddc3777bad2b509639cf))
+
 ## [1.2.12](https://github.com/jpb06/node-coverage-badges/compare/v1.2.11...v1.2.12) (2025-02-15)
 
 
