@@ -67,7 +67,7 @@
     "@vitest/coverage-v8": "3.0.6",
     "copyfiles": "2.4.1",
     "effect-errors": "1.8.37",
-    "npm-check-updates": "17.1.14",
+    "npm-check-updates": "17.1.15",
     "readme-package-icons": "1.2.0",
     "ts-paths-resolver": "1.2.32",
     "tsx": "4.19.3",
