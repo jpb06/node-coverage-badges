@@ -56,7 +56,7 @@
   "dependencies": {
     "@effect/platform": "0.78.0",
     "comment-json": "4.2.5",
-    "effect": "3.13.4",
+    "effect": "3.13.7",
     "picocolors": "1.1.1",
     "yargs": "17.7.2"
   },
@@ -66,10 +66,10 @@
     "@types/yargs": "17.0.33",
     "@vitest/coverage-v8": "3.0.8",
     "copyfiles": "2.4.1",
-    "effect-errors": "1.8.39",
+    "effect-errors": "1.8.41",
     "npm-check-updates": "17.1.15",
     "readme-package-icons": "1.2.0",
-    "ts-paths-resolver": "1.2.34",
+    "ts-paths-resolver": "1.2.35",
     "tsx": "4.19.3",
     "typescript": "5.8.2",
     "vite-tsconfig-paths": "5.1.4",
