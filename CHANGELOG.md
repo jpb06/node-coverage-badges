@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.16](https://github.com/jpb06/node-coverage-badges/compare/v1.2.15...v1.2.16) (2025-03-08)
+
+
+### Bug Fixes
+
+* moving effect to peer dependencies ([#60](https://github.com/jpb06/node-coverage-badges/issues/60)) ([2ee8494](https://github.com/jpb06/node-coverage-badges/commit/2ee8494a1be9b329556abd74d9b3db36894f7d65))
+
 ## [1.2.15](https://github.com/jpb06/node-coverage-badges/compare/v1.2.14...v1.2.15) (2025-03-08)
 
 
