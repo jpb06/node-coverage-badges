@@ -6,7 +6,6 @@
       "dependencies": {
         "@effect/platform": "0.78.0",
         "comment-json": "4.2.5",
-        "effect": "3.13.7",
         "picocolors": "1.1.1",
         "yargs": "17.7.2",
       },
@@ -25,6 +24,9 @@
         "vite-tsconfig-paths": "5.1.4",
         "vitest": "3.0.8",
         "vitest-mock-extended": "3.0.1",
+      },
+      "peerDependencies": {
+        "effect": "3.13.8",
       },
     },
   },
