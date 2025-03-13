@@ -71,7 +71,7 @@
     "effect-errors": "1.8.42",
     "npm-check-updates": "17.1.15",
     "readme-package-icons": "1.2.0",
-    "ts-paths-resolver": "1.2.36",
+    "ts-paths-resolver": "1.2.38",
     "tsx": "4.19.3",
     "typescript": "5.8.2",
     "vite-tsconfig-paths": "5.1.4",
