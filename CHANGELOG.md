@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.16](https://github.com/jpb06/node-coverage-badges/compare/v1.2.15...v1.2.16) (2025-03-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @effect/platform to v0.79.1 ([#63](https://github.com/jpb06/node-coverage-badges/issues/63)) ([2e53e35](https://github.com/jpb06/node-coverage-badges/commit/2e53e35e849e05c44c9aeb50d31bc1bf9d47b9fb))
+* **deps:** update dependency effect to v3.13.10 ([#62](https://github.com/jpb06/node-coverage-badges/issues/62)) ([daf30bf](https://github.com/jpb06/node-coverage-badges/commit/daf30bff01f9bdd2d7972823db096ec64c109d3c))
+* moving effect to peer dependencies ([#60](https://github.com/jpb06/node-coverage-badges/issues/60)) ([2ee8494](https://github.com/jpb06/node-coverage-badges/commit/2ee8494a1be9b329556abd74d9b3db36894f7d65))
+
 ## [1.2.15](https://github.com/jpb06/node-coverage-badges/compare/v1.2.14...v1.2.15) (2025-03-08)
 
 
