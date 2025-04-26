@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.17](https://github.com/jpb06/node-coverage-badges/compare/v1.2.16...v1.2.17) (2025-04-26)
+
+
+### Bug Fixes
+
+* cjs build ([#76](https://github.com/jpb06/node-coverage-badges/issues/76)) ([25919bc](https://github.com/jpb06/node-coverage-badges/commit/25919bc7159e1ecc6b0d26d3c33a33efbe12428b))
+* **deps:** update dependency effect to v3.14.14 ([#66](https://github.com/jpb06/node-coverage-badges/issues/66)) ([be21bdf](https://github.com/jpb06/node-coverage-badges/commit/be21bdf47f9740cf21fed054c6e582371a3ead0c))
+
 ## [1.2.16](https://github.com/jpb06/node-coverage-badges/compare/v1.2.15...v1.2.16) (2025-03-15)
 
 
