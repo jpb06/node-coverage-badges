@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.18](https://github.com/jpb06/node-coverage-badges/compare/v1.2.17...v1.2.18) (2025-05-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @effect/platform to v0.80.18 ([#67](https://github.com/jpb06/node-coverage-badges/issues/67)) ([a5c0cc7](https://github.com/jpb06/node-coverage-badges/commit/a5c0cc70da243e8c058c11aedf3a940ccd057e9a))
+* **deps:** update dependency effect to v3.14.18 ([#78](https://github.com/jpb06/node-coverage-badges/issues/78)) ([c6a206d](https://github.com/jpb06/node-coverage-badges/commit/c6a206deca353b7f8a30810a359c381738aad18a))
+
 ## [1.2.17](https://github.com/jpb06/node-coverage-badges/compare/v1.2.16...v1.2.17) (2025-04-26)
 
 
