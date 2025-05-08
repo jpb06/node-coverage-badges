@@ -22,7 +22,9 @@ export const getBadgeUrl = (
       const coverage = `${percentage}${encodeURI('%')}`;
       const colour = getBadgeColor(percentage);
 
-      const prefix = `${labelPrefix.endsWith(' ') ? labelPrefix : `${labelPrefix}: `}`;
+      const prefix = labelPrefix.endsWith(' ')
+        ? labelPrefix
+        : `${labelPrefix}: `;
       const label = encodeURI(`${prefix}${key}`);
       return `https://img.shields.io/badge/${label}-${coverage}-${colour}?logo=${logo}`;
     }),
