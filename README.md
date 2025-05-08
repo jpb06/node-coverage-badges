@@ -112,13 +112,16 @@ The `generateBadges` function accepts three optional arguments to specify:
 
 ```shell
 # will generate badges from './coverage/coverage-summary.json' in './badges' (default)
-yarn generateBadges
+pnpm generateBadges
 
 # will generate badges from './myModule/coverage-summary.json' in './cool' folder.
-yarn generateBadges -c ./myModule/coverage-summary.json -o ./cool
+pnpm generateBadges -c ./myModule/coverage-summary.json -o ./cool
 
 # will generate badges from './myModule/coverage-summary.json' in './cool' folder using the vitest icon.
-yarn generateBadges -c ./myModule/coverage-summary.json -o ./cool -l vitest
+pnpm generateBadges -c ./myModule/coverage-summary.json -o ./cool -l vitest
+
+# will generate badges from './myModule/coverage-summary.json' in './cool' folder using the vitest icon with badges labels matching 'Repo test coverage: %d'.
+pnpm generateBadges -c ./myModule/coverage-summary.json -o ./cool -l vitest -p 'Repo test coverage'
 ```
 
 ### 🔶 Node
@@ -143,7 +146,12 @@ import { generateBadges } from 'node-coverage-badges';
 
 (async () => {
   // will generate badges from './myModule/coverage-summary.json' in './cool' using the jest icon.
-  await generateBadges('./myModule/coverage-summary.json', './cool', 'jest');
+  await generateBadges(
+    './myModule/coverage-summary.json',
+    './cool',
+    'jest',
+    'My badges labels prefix'
+  );
 })();
 ```
 
@@ -166,6 +174,7 @@ const generateBadgesEffect: (
   coverageSummaryPath?: string,
   outputPath?: string,
   logo?: string
+  labelPrefix?: string
 ) => Effect.Effect<boolean, FsError | AxiosError, never>;
 ```
 
@@ -192,7 +201,7 @@ import { generateBadgesFromValues } from 'node-coverage-badges';
     },
   };
 
-  await generateBadgesFromValues(rawValues, './badges', 'vitest');
+  await generateBadgesFromValues(rawValues, './badges', 'vitest', 'Coverage');
 })();
 ```
 
@@ -203,6 +212,7 @@ const generateBadgesFromValuesEffect: (
   summaryValues: CoverageSummaryValue,
   outputPath?: string,
   logo?: string
+  labelPrefix?: string
 ) => Effect.Effect<boolean, FsError | AxiosError, never>;
 ```
 

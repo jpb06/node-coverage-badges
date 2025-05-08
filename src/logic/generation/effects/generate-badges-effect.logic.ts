@@ -11,6 +11,7 @@ export const generateBadgesEffect = (
   coverageSummaryPath: string,
   outputPath: string,
   logo: string,
+  labelPrefix: string,
 ) =>
   pipe(
     Effect.all([
@@ -23,7 +24,7 @@ export const generateBadgesEffect = (
     Effect.flatMap((summary) =>
       Effect.all(
         [...coverageKeysArray, 'total' as const].map(
-          generateCoverageFile(summary, outputPath, logo),
+          generateCoverageFile(summary, outputPath, logo, labelPrefix),
         ),
         { concurrency: 'unbounded' },
       ),

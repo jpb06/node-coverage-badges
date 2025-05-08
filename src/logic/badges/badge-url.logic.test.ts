@@ -1,6 +1,7 @@
 import { runSync } from 'effect-errors';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { defaultLabelPrefix } from '@constants';
 import { makeConsoleTestLayer } from '@tests/layers';
 import { coverageSummaryFileContentMock } from '@tests/mock-data';
 
@@ -21,7 +22,7 @@ describe('badgeUrl function', () => {
 
     const result = runSync(
       pipe(
-        getBadgeUrl(summary, 'branches', 'vitest'),
+        getBadgeUrl(summary, 'branches', 'vitest', defaultLabelPrefix),
         Effect.provide(ConsoleTestLayer),
       ),
     );
@@ -40,13 +41,13 @@ describe('badgeUrl function', () => {
 
     const result = runSync(
       pipe(
-        getBadgeUrl(summary, 'lines', 'vitest'),
+        getBadgeUrl(summary, 'lines', 'vitest', defaultLabelPrefix),
         Effect.provide(ConsoleTestLayer),
       ),
     );
 
     expect(result).toBe(
-      'https://img.shields.io/badge/lines-50%25-red?logo=vitest',
+      'https://img.shields.io/badge/Test%20coverage:%20lines-50%25-red?logo=vitest',
     );
   });
 });

@@ -17,9 +17,15 @@ runPromise(
     Effect.gen(function* () {
       const { reportSuccess, reportError } = yield* Console;
       try {
-        const { coverageSummaryPath, outputPath, logo } = validateArguments();
+        const { coverageSummaryPath, outputPath, logo, labelPrefix } =
+          validateArguments();
 
-        yield* generateBadgesEffect(coverageSummaryPath, outputPath, logo);
+        yield* generateBadgesEffect(
+          coverageSummaryPath,
+          outputPath,
+          logo,
+          labelPrefix,
+        );
 
         yield* reportSuccess(coverageSummaryPath);
         process.exit(0);
