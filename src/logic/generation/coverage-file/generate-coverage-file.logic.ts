@@ -10,12 +10,17 @@ import type { CoverageKeysWithTotal, CoverageSummaryFileContent } from '@types';
 import { getBadgeUrl } from '../../badges/badge-url.logic.js';
 
 export const generateCoverageFile =
-  (summary: CoverageSummaryFileContent, outputPath: string, logo: string) =>
+  (
+    summary: CoverageSummaryFileContent,
+    outputPath: string,
+    logo: string,
+    labelPrefix: string,
+  ) =>
   (key: CoverageKeysWithTotal) =>
     pipe(
       Effect.gen(function* () {
         const { reportFailure } = yield* Console;
-        const badgeUrl = yield* getBadgeUrl(summary, key, logo);
+        const badgeUrl = yield* getBadgeUrl(summary, key, logo, labelPrefix);
         if (!badgeUrl) {
           return yield* reportFailure(
             `generateCoverageFile: missing badgeUrl for ${key}`,

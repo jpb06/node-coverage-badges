@@ -9,6 +9,7 @@ export const getBadgeUrl = (
   summary: CoverageSummaryFileContent,
   key: CoverageKeysWithTotal,
   logo: string,
+  labelPrefix: string,
 ) =>
   pipe(
     Effect.gen(function* () {
@@ -21,7 +22,11 @@ export const getBadgeUrl = (
       const coverage = `${percentage}${encodeURI('%')}`;
       const colour = getBadgeColor(percentage);
 
-      return `https://img.shields.io/badge/${key}-${coverage}-${colour}?logo=${logo}`;
+      const prefix = labelPrefix.endsWith(' ')
+        ? labelPrefix
+        : `${labelPrefix}: `;
+      const label = encodeURI(`${prefix}${key}`);
+      return `https://img.shields.io/badge/${label}-${coverage}-${colour}?logo=${logo}`;
     }),
     Effect.withSpan('get-badge-url', {
       attributes: {

@@ -1,7 +1,7 @@
 import { Effect, Layer, pipe } from 'effect';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { defaultIcon, defaultOutputDir } from '@constants';
+import { defaultIcon, defaultLabelPrefix, defaultOutputDir } from '@constants';
 import {
   makeConsoleTestLayer,
   makeFsTestLayer,
@@ -34,6 +34,7 @@ describe('generateCoverageFile function', () => {
           summary,
           defaultOutputDir,
           defaultIcon,
+          defaultLabelPrefix,
         )('functions'),
         Effect.scoped,
         Effect.provide(
@@ -72,6 +73,7 @@ describe('generateCoverageFile function', () => {
           summary,
           defaultOutputDir,
           defaultIcon,
+          defaultLabelPrefix,
         )('functions'),
         Effect.scoped,
         Effect.provide(
@@ -105,6 +107,7 @@ describe('generateCoverageFile function', () => {
           summary,
           defaultOutputDir,
           defaultIcon,
+          defaultLabelPrefix,
         )('functions'),
         Effect.scoped,
         Effect.provide(

@@ -1,4 +1,4 @@
-import { Context, Effect, Layer, pipe } from 'effect';
+import { Context, Effect, Console as EffectConsole, Layer, pipe } from 'effect';
 import colors from 'picocolors';
 
 export class Console extends Context.Tag('Console')<
@@ -16,21 +16,17 @@ export type ConsoleLayer = (typeof Console)['Service'];
 export const ConsoleLive = Layer.succeed(Console, {
   reportSuccess: (summaryPath: string) =>
     pipe(
-      Effect.succeed(
-        console.info(
-          `${colors.cyanBright('node-coverage-badges')} 🚀 - ${colors.greenBright(
-            'Badges generated from summary path',
-          )} ${colors.underline(colors.cyanBright(summaryPath))}`,
-        ),
+      EffectConsole.info(
+        `${colors.cyanBright('node-coverage-badges')} 🚀 - ${colors.greenBright(
+          'Badges generated from summary path',
+        )} ${colors.underline(colors.cyanBright(summaryPath))}`,
       ),
       Effect.withSpan('console/report-success'),
     ),
   reportFailure: (message: string) =>
     pipe(
-      Effect.succeed(
-        console.error(
-          `${colors.cyanBright('node-coverage-badges')} ❌ - ${colors.redBright(message)}`,
-        ),
+      EffectConsole.error(
+        `${colors.cyanBright('node-coverage-badges')} ❌ - ${colors.redBright(message)}`,
       ),
       Effect.withSpan('console/report-failure'),
     ),
@@ -42,20 +38,12 @@ export const ConsoleLive = Layer.succeed(Console, {
           message = error.message;
         }
 
-        console.error(
+        EffectConsole.error(
           `${colors.cyanBright('node-coverage-badges')} ❌ - ${colors.redBright(message)}`,
         );
       }),
       Effect.withSpan('console/report-error'),
     ),
-  info: (message: string) =>
-    pipe(
-      Effect.succeed(console.info(message)),
-      Effect.withSpan('console/info'),
-    ),
-  error: (message: string) =>
-    pipe(
-      Effect.succeed(console.error(message)),
-      Effect.withSpan('console/error'),
-    ),
+  info: EffectConsole.info,
+  error: EffectConsole.error,
 });

@@ -2,7 +2,7 @@ import { existsSync } from 'node:fs';
 import colors from 'picocolors';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { defaultIcon } from '@constants';
+import { defaultIcon, defaultLabelPrefix } from '@constants';
 import { runCommand } from '@tests';
 import { mockConsole } from '@tests/mocks';
 import { spyOnProcessExit } from '@tests/spies';
@@ -48,6 +48,7 @@ describe('validateArguments function', () => {
       coverageSummaryPath: './coverage/coverage-summary.json',
       outputPath: './badges',
       logo: defaultIcon,
+      labelPrefix: defaultLabelPrefix,
     });
   });
 
@@ -61,6 +62,7 @@ describe('validateArguments function', () => {
       coverageSummaryPath: path,
       outputPath: './badges',
       logo: defaultIcon,
+      labelPrefix: defaultLabelPrefix,
     });
   });
 
@@ -74,6 +76,7 @@ describe('validateArguments function', () => {
       coverageSummaryPath: './coverage/coverage-summary.json',
       outputPath: path,
       logo: defaultIcon,
+      labelPrefix: defaultLabelPrefix,
     });
   });
 
@@ -87,6 +90,38 @@ describe('validateArguments function', () => {
       coverageSummaryPath: './coverage/coverage-summary.json',
       outputPath: './badges',
       logo,
+      labelPrefix: defaultLabelPrefix,
     });
+  });
+
+  it('should return a custom label prefix', async () => {
+    vi.mocked(existsSync).mockReturnValueOnce(true);
+
+    const labelPrefix = 'yolo my bro';
+    const args = await runCommand(validateArgumentsPath, '-p', labelPrefix);
+
+    expect(args).toStrictEqual({
+      coverageSummaryPath: './coverage/coverage-summary.json',
+      outputPath: './badges',
+      logo: defaultIcon,
+      labelPrefix,
+    });
+  });
+
+  it('should fail il label prefix contains "-"', async () => {
+    vi.mocked(existsSync).mockReturnValueOnce(true);
+
+    const labelPrefix = 'yolo my - bro';
+    await runCommand(validateArgumentsPath, '-p', labelPrefix);
+
+    expect(mockExit).toHaveBeenCalled();
+
+    expect(console.error).toHaveBeenCalledWith(
+      colors.bold(
+        colors.redBright(
+          `Errors:\n-p\t\tLabel prefix '${labelPrefix}' should not contain character '-'\n`,
+        ),
+      ),
+    );
   });
 });

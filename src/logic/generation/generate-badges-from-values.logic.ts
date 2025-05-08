@@ -2,7 +2,7 @@ import { FetchHttpClient } from '@effect/platform';
 import { NodeFileSystem } from '@effect/platform-node';
 import { Effect, Layer, pipe } from 'effect';
 
-import { defaultIcon, defaultOutputDir } from '@constants';
+import { defaultIcon, defaultLabelPrefix, defaultOutputDir } from '@constants';
 import { ConsoleLive } from '@effects/console';
 
 import {
@@ -14,9 +14,10 @@ export const generateBadgesFromValuesEffect = (
   summaryValues: CoverageSummaryValue,
   outputPath = defaultOutputDir,
   logo = defaultIcon,
+  labelPrefix = defaultLabelPrefix,
 ) =>
   pipe(
-    program(summaryValues, outputPath, logo),
+    program(summaryValues, outputPath, logo, labelPrefix),
     Effect.scoped,
     Effect.provide(
       Layer.mergeAll(NodeFileSystem.layer, FetchHttpClient.layer, ConsoleLive),
@@ -27,7 +28,13 @@ export const generateBadgesFromValues = async (
   summaryValues: CoverageSummaryValue,
   outputPath = defaultOutputDir,
   logo = defaultIcon,
+  labelPrefix = defaultLabelPrefix,
 ) =>
   Effect.runPromise(
-    generateBadgesFromValuesEffect(summaryValues, outputPath, logo),
+    generateBadgesFromValuesEffect(
+      summaryValues,
+      outputPath,
+      logo,
+      labelPrefix,
+    ),
   );

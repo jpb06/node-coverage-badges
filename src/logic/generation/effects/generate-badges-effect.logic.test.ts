@@ -2,7 +2,12 @@ import { Effect, Layer, pipe } from 'effect';
 import { runPromise } from 'effect-errors';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { defaultIcon, defaultOutputDir, defaultSummaryPath } from '@constants';
+import {
+  defaultIcon,
+  defaultLabelPrefix,
+  defaultOutputDir,
+  defaultSummaryPath,
+} from '@constants';
 import {
   FsTestLayerError,
   makeConsoleTestLayer,
@@ -52,7 +57,12 @@ describe('generateBadges function', () => {
 
     await runPromise(
       pipe(
-        generateBadgesEffect(defaultSummaryPath, defaultOutputDir, defaultIcon),
+        generateBadgesEffect(
+          defaultSummaryPath,
+          defaultOutputDir,
+          defaultIcon,
+          defaultLabelPrefix,
+        ),
         Effect.scoped,
         Effect.provide(
           Layer.mergeAll(FsTestLayer, ConsoleTestLayer, HttpClientTestLayer),
@@ -93,7 +103,12 @@ describe('generateBadges function', () => {
 
     await runPromise(
       pipe(
-        generateBadgesEffect(defaultSummaryPath, defaultOutputDir, defaultIcon),
+        generateBadgesEffect(
+          defaultSummaryPath,
+          defaultOutputDir,
+          defaultIcon,
+          defaultLabelPrefix,
+        ),
         Effect.scoped,
         Effect.provide(
           Layer.mergeAll(FsTestLayer, ConsoleTestLayer, HttpClientTestLayer),
@@ -114,7 +129,12 @@ describe('generateBadges function', () => {
 
     const error = await runPromise(
       pipe(
-        generateBadgesEffect(defaultSummaryPath, defaultOutputDir, defaultIcon),
+        generateBadgesEffect(
+          defaultSummaryPath,
+          defaultOutputDir,
+          defaultIcon,
+          defaultLabelPrefix,
+        ),
         Effect.scoped,
         Effect.flip,
         Effect.provide(
@@ -150,7 +170,12 @@ describe('generateBadges function', () => {
 
     await runPromise(
       pipe(
-        generateBadgesEffect(summaryPath, outputDir, defaultIcon),
+        generateBadgesEffect(
+          summaryPath,
+          outputDir,
+          defaultIcon,
+          defaultLabelPrefix,
+        ),
         Effect.scoped,
         Effect.provide(
           Layer.mergeAll(FsTestLayer, ConsoleTestLayer, HttpClientTestLayer),
@@ -169,6 +194,7 @@ describe('generateBadges function', () => {
     expect(generateCoverageFile).toHaveBeenCalledWith(
       expect.anything(),
       outputDir,
+      expect.anything(),
       expect.anything(),
     );
     expect(generateCoverageFileCurry).toHaveBeenCalledTimes(5);
