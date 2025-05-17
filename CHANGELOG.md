@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/jpb06/node-coverage-badges/compare/v1.3.0...v1.3.1) (2025-05-17)
+
+
+### Bug Fixes
+
+* permissive ranges for effect peer deps ([#93](https://github.com/jpb06/node-coverage-badges/issues/93)) ([133da2d](https://github.com/jpb06/node-coverage-badges/commit/133da2d29d30eb0f774e282b45c5b719ffbd5763))
+
 ## [1.3.0](https://github.com/jpb06/node-coverage-badges/compare/v1.2.18...v1.3.0) (2025-05-08)
 
 
