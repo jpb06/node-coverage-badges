@@ -54,7 +54,7 @@
     "sync-icons": "bun generateReadmeIcons -h 50"
   },
   "dependencies": {
-    "@effect/platform": "0.80.21",
+    "@effect/platform": "0.82.3",
     "comment-json": "4.2.5",
     "picocolors": "1.1.1",
     "yargs": "17.7.2"
