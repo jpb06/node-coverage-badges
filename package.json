@@ -57,7 +57,7 @@
     "comment-json": "4.2.5",
     "effect-errors": "1.10.13",
     "picocolors": "1.1.1",
-    "yargs": "17.7.2"
+    "yargs": "18.0.0"
   },
   "peerDependencies": {
     "@effect/platform": "0.x",
