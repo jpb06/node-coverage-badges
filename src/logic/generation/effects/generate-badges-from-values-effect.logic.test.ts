@@ -31,7 +31,7 @@ describe('generateBadgesFromValues function', () => {
 
   const generateCoverageFileCurry = vi
     .fn()
-    // biome-ignore lint/suspicious/noEmptyBlockStatements: <explanation>
+    // biome-ignore lint/suspicious/noEmptyBlockStatements: tests
     .mockImplementation(() => Effect.sync(() => {}));
 
   beforeEach(() => {
