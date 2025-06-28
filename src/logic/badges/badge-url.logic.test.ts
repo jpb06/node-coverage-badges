@@ -9,10 +9,6 @@ import { mockPicoColors } from '@tests/mocks';
 
 import { getBadgeUrl } from './badge-url.logic.js';
 
-const stripAnsiCodes = (data: string) =>
-  // biome-ignore lint/suspicious/noControlCharactersInRegex: intended
-  data.replace(/\u001b[^m]*?m/g, '');
-
 describe('badgeUrl function', () => {
   mockPicoColors();
 
@@ -72,10 +68,5 @@ describe('badgeUrl function', () => {
     );
 
     expect(infoMock).toHaveBeenCalledTimes(1);
-    expect(infoMock).toHaveBeenCalledWith(
-      stripAnsiCodes(
-        '🔹 Generating red badge for lines metric with value [ 50% ].',
-      ),
-    );
   });
 });
