@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/jpb06/node-coverage-badges/compare/v1.3.3...v1.4.0) (2025-06-28)
+
+
+### Features
+
+* conditionally display generation info ([#106](https://github.com/jpb06/node-coverage-badges/issues/106)) ([6902b58](https://github.com/jpb06/node-coverage-badges/commit/6902b582060bdc4aa7f9089e455f034ddc0a7128))
+
 ## [1.3.3](https://github.com/jpb06/node-coverage-badges/compare/v1.3.2...v1.3.3) (2025-06-25)
 
 
