@@ -5,10 +5,13 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { defaultLabelPrefix } from '@constants';
 import { makeConsoleTestLayer } from '@tests/layers';
 import { coverageSummaryFileContentMock } from '@tests/mock-data';
+import { mockPicoColors } from '@tests/mocks';
 
 import { getBadgeUrl } from './badge-url.logic.js';
 
 describe('badgeUrl function', () => {
+  mockPicoColors();
+
   beforeEach(() => {
     vi.clearAllMocks();
   });
