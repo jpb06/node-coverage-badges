@@ -1,15 +1,19 @@
 import { Effect, pipe } from 'effect';
+import color from 'picocolors';
 
+import { Console } from '@effects/console';
 import type { CoverageKeysWithTotal, CoverageSummaryFileContent } from '@types';
 
 import { getBadgeColor } from './logic/badge-color.logic.js';
 import { getPercentage } from './logic/coverage-percentage.logic.js';
+import { formatColor } from './logic/format-color.js';
 
 export const getBadgeUrl = (
   summary: CoverageSummaryFileContent,
   key: CoverageKeysWithTotal,
   logo: string,
   labelPrefix: string,
+  debug: boolean,
 ) =>
   pipe(
     Effect.gen(function* () {
@@ -26,6 +30,16 @@ export const getBadgeUrl = (
         ? labelPrefix
         : `${labelPrefix}: `;
       const label = encodeURI(`${prefix}${key}`);
+
+      if (debug) {
+        const { info } = yield* Console;
+
+        const percentageDisplay = color.whiteBright(`[ ${percentage}% ]`);
+        yield* info(
+          `🔹 Generating ${formatColor(colour)} badge for ${color.cyanBright(color.underline(key))} metric with value ${percentageDisplay}.`,
+        );
+      }
+
       return `https://img.shields.io/badge/${label}-${coverage}-${colour}?logo=${logo}`;
     }),
     Effect.withSpan('get-badge-url', {
@@ -33,6 +47,7 @@ export const getBadgeUrl = (
         summary,
         key,
         logo,
+        debug,
       },
     }),
   );

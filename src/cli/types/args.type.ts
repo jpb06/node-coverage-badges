@@ -3,4 +3,5 @@ export interface GenerateBadgesArguments {
   outputPath: string;
   logo: string;
   labelPrefix: string;
+  debug: boolean;
 }

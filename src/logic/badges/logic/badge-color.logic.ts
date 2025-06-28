@@ -1,6 +1,6 @@
 import { Match } from 'effect';
 
-type BadgeColor = 'red' | 'yellow' | 'brightgreen';
+export type BadgeColor = 'red' | 'yellow' | 'brightgreen';
 
 export const getBadgeColor = (percentage: number): BadgeColor =>
   Match.value(percentage).pipe(

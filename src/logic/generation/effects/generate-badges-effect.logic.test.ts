@@ -3,6 +3,7 @@ import { runPromise } from 'effect-errors';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import {
+  defaultDebug,
   defaultIcon,
   defaultLabelPrefix,
   defaultOutputDir,
@@ -62,6 +63,7 @@ describe('generateBadges function', () => {
           defaultOutputDir,
           defaultIcon,
           defaultLabelPrefix,
+          defaultDebug,
         ),
         Effect.scoped,
         Effect.provide(
@@ -108,6 +110,7 @@ describe('generateBadges function', () => {
           defaultOutputDir,
           defaultIcon,
           defaultLabelPrefix,
+          defaultDebug,
         ),
         Effect.scoped,
         Effect.provide(
@@ -134,6 +137,7 @@ describe('generateBadges function', () => {
           defaultOutputDir,
           defaultIcon,
           defaultLabelPrefix,
+          defaultDebug,
         ),
         Effect.scoped,
         Effect.flip,
@@ -175,6 +179,7 @@ describe('generateBadges function', () => {
           outputDir,
           defaultIcon,
           defaultLabelPrefix,
+          defaultDebug,
         ),
         Effect.scoped,
         Effect.provide(
@@ -196,6 +201,7 @@ describe('generateBadges function', () => {
       outputDir,
       expect.anything(),
       expect.anything(),
+      defaultDebug,
     );
     expect(generateCoverageFileCurry).toHaveBeenCalledTimes(5);
   });

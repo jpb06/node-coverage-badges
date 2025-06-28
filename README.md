@@ -1,7 +1,7 @@
 # node-coverage-badges
 
 [![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://github.dev/jpb06/node-coverage-badges)
-![Github workflow](https://img.shields.io/github/actions/workflow/status/jpb06/node-coverage-badges/tests-scan.yml?branch=master&logo=github-actions&label=last%20workflow)
+![Github workflow](https://img.shields.io/github/actions/workflow/status/jpb06/node-coverage-badges/tests-scan.yml?branch=main&logo=github-actions&label=last%20workflow)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=jpb06_node-coverage-badges&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=jpb06_node-coverage-badges)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=jpb06_node-coverage-badges&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=jpb06_node-coverage-badges)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=jpb06_node-coverage-badges&metric=security_rating)](https://sonarcloud.io/dashboard?id=jpb06_node-coverage-badges)
@@ -35,7 +35,7 @@ This package uses [shields.io](https://shields.io/) to created coverage badges f
 | ![Functions](./badges/coverage-functions.svg)   | Percentage of functions executed within tests  |
 | ![Lines](./badges/coverage-lines.svg)           | Percentage of lines covered by tests           |
 | ![Statements](./badges/coverage-statements.svg) | Percentage of statements executed within tests |
-| ![Jest coverage](./badges/coverage-total.svg)   | Average of the above coverage percentages      |
+| ![Tests coverage](./badges/coverage-total.svg)  | Average of the above coverage percentages      |
 
 ## ⚡ Github action
 
@@ -95,6 +95,25 @@ You have two ways to generate coverage badges: cli and node. Both will create a 
 
 ### 🔶 Cli
 
+```bash
+generateBadges -c [coverageJsonSummaryPath] -o [outputPath] -l [logo]
+
+Options:
+      --help     Show help                                             [boolean]
+      --version  Show version number                                   [boolean]
+  -c             coverage file path[default: "./coverage/coverage-summary.json"]
+  -o             output path                               [default: "./badges"]
+  -l             vitest                                [default: <default icon>]
+  -p             badges label prefix                  [default: "Test coverage"]
+  -d             debug                                          [default: false]
+
+Examples:
+  generateBadges -c ./coverage/coverage-summary.json -o ./badges -l vitest
+
+Generates badges from a coverage report
+
+```
+
 You can add a script to your package.json like so:
 
 ```json
@@ -133,10 +152,8 @@ You can generate badges from a summary file or raw values in node.
 ```typescript
 import { generateBadges } from 'node-coverage-badges';
 
-(async () => {
-  // will generate badges from './coverage/coverage-summary.json' in './badges' (default)
-  await generateBadges();
-})();
+// will generate badges from './coverage/coverage-summary.json' in './badges' (default)
+await generateBadges();
 ```
 
 The function optionally accepts two arguments to specify a custom path for the json summary file and the output path:
@@ -144,15 +161,13 @@ The function optionally accepts two arguments to specify a custom path for the j
 ```typescript
 import { generateBadges } from 'node-coverage-badges';
 
-(async () => {
-  // will generate badges from './myModule/coverage-summary.json' in './cool' using the jest icon.
-  await generateBadges(
-    './myModule/coverage-summary.json',
-    './cool',
-    'jest',
-    'My badges labels prefix'
-  );
-})();
+// will generate badges from './myModule/coverage-summary.json' in './cool' using the jest icon.
+await generateBadges(
+  './myModule/coverage-summary.json',
+  './cool',
+  'jest',
+  'My badges labels prefix'
+);
 ```
 
 You can also directly import the effect, if you use [Effect](https://effect.website/docs/introduction):
@@ -183,26 +198,24 @@ const generateBadgesEffect: (
 ```typescript
 import { generateBadgesFromValues } from 'node-coverage-badges';
 
-(async () => {
-  const rawValues = {
-    total: {
-      branches: {
-        pct: 25,
-      },
-      functions: {
-        pct: 40,
-      },
-      lines: {
-        pct: 30,
-      },
-      statements: {
-        pct: 70,
-      },
+const rawValues = {
+  total: {
+    branches: {
+      pct: 25,
     },
-  };
+    functions: {
+      pct: 40,
+    },
+    lines: {
+      pct: 30,
+    },
+    statements: {
+      pct: 70,
+    },
+  },
+};
 
-  await generateBadgesFromValues(rawValues, './badges', 'vitest', 'Coverage');
-})();
+await generateBadgesFromValues(rawValues, './badges', 'vitest', 'Coverage');
 ```
 
 Effect signature is the following:
@@ -215,6 +228,26 @@ const generateBadgesFromValuesEffect: (
   labelPrefix?: string
 ) => Effect.Effect<boolean, FsError | AxiosError, never>;
 ```
+
+#### 🧿 Debug
+
+You can pass a boolean as last argument to get generation info:
+
+```typescript
+import { generateBadges } from 'node-coverage-badges';
+
+await generateBadges(
+  './myModule/coverage-summary.json',
+  './cool',
+  'jest',
+  'My badges labels prefix'
+  true
+);
+```
+
+Which will provide the following kind of output:
+
+![Debug](./assets/debug.png)
 
 ## ⚡ Thanks
 

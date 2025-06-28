@@ -5,6 +5,7 @@ import { hideBin } from 'yargs/helpers';
 import yargs from 'yargs/yargs';
 
 import {
+  defaultDebug,
   defaultIcon,
   defaultLabelPrefix,
   defaultOutputDir,
@@ -18,6 +19,7 @@ interface CliArguments {
   o: string;
   l: string;
   p: string;
+  d: boolean | string;
 }
 
 export const validateArguments = (): GenerateBadgesArguments => {
@@ -34,10 +36,12 @@ export const validateArguments = (): GenerateBadgesArguments => {
     .describe('o', colors.cyanBright('output path'))
     .describe('l', colors.cyanBright('vitest'))
     .describe('p', colors.cyanBright('badges label prefix'))
+    .describe('d', colors.cyanBright('debug'))
     .default('c', defaultSummaryPath)
     .default('o', defaultOutputDir)
     .default('l', defaultIcon, '<default icon>')
     .default('p', defaultLabelPrefix)
+    .default('d', defaultDebug)
     .check((args) => {
       const coverageFileExists = existsSync(args.c);
       if (!coverageFileExists) {
@@ -68,5 +72,6 @@ export const validateArguments = (): GenerateBadgesArguments => {
     outputPath: argv.o,
     logo: argv.l,
     labelPrefix: argv.p,
+    debug: argv.d === 'true' || argv.d === true,
   };
 };

@@ -15,12 +15,19 @@ export const generateCoverageFile =
     outputPath: string,
     logo: string,
     labelPrefix: string,
+    debug: boolean,
   ) =>
   (key: CoverageKeysWithTotal) =>
     pipe(
       Effect.gen(function* () {
         const { reportFailure } = yield* Console;
-        const badgeUrl = yield* getBadgeUrl(summary, key, logo, labelPrefix);
+        const badgeUrl = yield* getBadgeUrl(
+          summary,
+          key,
+          logo,
+          labelPrefix,
+          debug,
+        );
         if (!badgeUrl) {
           return yield* reportFailure(
             `generateCoverageFile: missing badgeUrl for ${key}`,
@@ -44,6 +51,7 @@ export const generateCoverageFile =
           outputPath,
           logo,
           key,
+          debug,
         },
       }),
     );

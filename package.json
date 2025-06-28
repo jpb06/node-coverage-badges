@@ -40,7 +40,7 @@
     "postbuild-cjs": "echo '{\"type\": \"commonjs\"}' > dist/cjs/package.json",
     "postbuild-esm": "echo '{\"type\": \"module\"}' > dist/esm/package.json",
     "postbuild": "bun run copy-package && bun run copy-readme && bun resolve-ts-paths-esm",
-    "cli": "node ./dist/esm/cli/generate-badges.cli.js -o ./badges -c ./coverage/coverage-summary.json -p 'Test coverage'",
+    "cli": "node ./dist/esm/cli/generate-badges.cli.js -o ./badges -c ./coverage/coverage-summary.json -p 'Test coverage' -d true",
     "dev-values": "bun ./src/tests/generate-from-values.ts",
     "type-check": "tsc --project tsconfig.type-check.json --noEmit",
     "format": "biome format --write ./src",

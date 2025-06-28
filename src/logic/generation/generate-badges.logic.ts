@@ -3,6 +3,7 @@ import { NodeFileSystem } from '@effect/platform-node';
 import { Effect, Layer, pipe } from 'effect';
 
 import {
+  defaultDebug,
   defaultIcon,
   defaultLabelPrefix,
   defaultOutputDir,
@@ -17,9 +18,10 @@ export const generateBadgesEffect = (
   outputPath = defaultOutputDir,
   logo = defaultIcon,
   labelPrefix = defaultLabelPrefix,
+  debug = defaultDebug,
 ) =>
   pipe(
-    program(coverageSummaryPath, outputPath, logo, labelPrefix),
+    program(coverageSummaryPath, outputPath, logo, labelPrefix, debug),
     Effect.scoped,
     Effect.provide(
       Layer.mergeAll(NodeFileSystem.layer, FetchHttpClient.layer, ConsoleLive),
@@ -31,7 +33,14 @@ export const generateBadges = async (
   outputPath = defaultOutputDir,
   logo = defaultIcon,
   labelPrefix = defaultLabelPrefix,
+  debug = defaultDebug,
 ) =>
   Effect.runPromise(
-    generateBadgesEffect(coverageSummaryPath, outputPath, logo, labelPrefix),
+    generateBadgesEffect(
+      coverageSummaryPath,
+      outputPath,
+      logo,
+      labelPrefix,
+      debug,
+    ),
   );
