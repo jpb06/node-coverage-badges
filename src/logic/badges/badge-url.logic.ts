@@ -34,8 +34,9 @@ export const getBadgeUrl = (
       if (debug) {
         const { info } = yield* Console;
 
+        const percentageDisplay = color.whiteBright(`[ ${percentage}% ]`);
         yield* info(
-          `🔹 Generating ${formatColor(colour)} badge for ${color.cyanBright(color.underline(key))} metric with value ${color.whiteBright(`[ ${percentage}% ]`)}.`,
+          `🔹 Generating ${formatColor(colour)} badge for ${color.cyanBright(color.underline(key))} metric with value ${percentageDisplay}.`,
         );
       }
 
