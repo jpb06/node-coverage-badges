@@ -17,7 +17,7 @@ runPromise(
     Effect.gen(function* () {
       const { reportSuccess, reportError } = yield* Console;
       try {
-        const { coverageSummaryPath, outputPath, logo, labelPrefix } =
+        const { coverageSummaryPath, outputPath, logo, labelPrefix, debug } =
           validateArguments();
 
         yield* generateBadgesEffect(
@@ -25,6 +25,7 @@ runPromise(
           outputPath,
           logo,
           labelPrefix,
+          debug,
         );
 
         yield* reportSuccess(coverageSummaryPath);

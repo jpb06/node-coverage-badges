@@ -1,7 +1,13 @@
 import { Effect, Layer, pipe } from 'effect';
+import { runPromise } from 'effect-errors';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { defaultIcon, defaultLabelPrefix, defaultOutputDir } from '@constants';
+import {
+  defaultDebug,
+  defaultIcon,
+  defaultLabelPrefix,
+  defaultOutputDir,
+} from '@constants';
 import {
   makeConsoleTestLayer,
   makeFsTestLayer,
@@ -9,7 +15,6 @@ import {
 } from '@tests/layers';
 import { coverageSummaryFileContentMock } from '@tests/mock-data';
 
-import { runPromise } from 'effect-errors';
 import { generateCoverageFile } from './generate-coverage-file.logic.js';
 
 describe('generateCoverageFile function', () => {
@@ -35,6 +40,7 @@ describe('generateCoverageFile function', () => {
           defaultOutputDir,
           defaultIcon,
           defaultLabelPrefix,
+          defaultDebug,
         )('functions'),
         Effect.scoped,
         Effect.provide(
@@ -74,6 +80,7 @@ describe('generateCoverageFile function', () => {
           defaultOutputDir,
           defaultIcon,
           defaultLabelPrefix,
+          defaultDebug,
         )('functions'),
         Effect.scoped,
         Effect.provide(
@@ -108,6 +115,7 @@ describe('generateCoverageFile function', () => {
           defaultOutputDir,
           defaultIcon,
           defaultLabelPrefix,
+          defaultDebug,
         )('functions'),
         Effect.scoped,
         Effect.provide(

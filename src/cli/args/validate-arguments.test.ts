@@ -1,8 +1,9 @@
 import { existsSync } from 'node:fs';
+
 import colors from 'picocolors';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { defaultIcon, defaultLabelPrefix } from '@constants';
+import { defaultDebug, defaultIcon, defaultLabelPrefix } from '@constants';
 import { runCommand } from '@tests';
 import { mockConsole } from '@tests/mocks';
 import { spyOnProcessExit } from '@tests/spies';
@@ -49,6 +50,7 @@ describe('validateArguments function', () => {
       outputPath: './badges',
       logo: defaultIcon,
       labelPrefix: defaultLabelPrefix,
+      debug: defaultDebug,
     });
   });
 
@@ -63,6 +65,7 @@ describe('validateArguments function', () => {
       outputPath: './badges',
       logo: defaultIcon,
       labelPrefix: defaultLabelPrefix,
+      debug: defaultDebug,
     });
   });
 
@@ -77,6 +80,7 @@ describe('validateArguments function', () => {
       outputPath: path,
       logo: defaultIcon,
       labelPrefix: defaultLabelPrefix,
+      debug: defaultDebug,
     });
   });
 
@@ -91,6 +95,7 @@ describe('validateArguments function', () => {
       outputPath: './badges',
       logo,
       labelPrefix: defaultLabelPrefix,
+      debug: defaultDebug,
     });
   });
 
@@ -105,6 +110,7 @@ describe('validateArguments function', () => {
       outputPath: './badges',
       logo: defaultIcon,
       labelPrefix,
+      debug: defaultDebug,
     });
   });
 
@@ -123,5 +129,19 @@ describe('validateArguments function', () => {
         ),
       ),
     );
+  });
+
+  it('should return a debug as true', async () => {
+    vi.mocked(existsSync).mockReturnValueOnce(true);
+
+    const args = await runCommand(validateArgumentsPath, '-d', true);
+
+    expect(args).toStrictEqual({
+      coverageSummaryPath: './coverage/coverage-summary.json',
+      outputPath: './badges',
+      logo: defaultIcon,
+      labelPrefix: defaultLabelPrefix,
+      debug: true,
+    });
   });
 });

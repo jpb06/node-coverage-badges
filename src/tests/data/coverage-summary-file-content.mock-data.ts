@@ -1,4 +1,4 @@
-import type { FileCoverageTotal, CoverageSummaryFileContent } from '@types';
+import type { CoverageSummaryFileContent, FileCoverageTotal } from '@types';
 
 export const coverageSummaryFileContentMock = (
   linesPct?: number,

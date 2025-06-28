@@ -1,3 +1,4 @@
+import { Effect, pipe } from 'effect';
 import { runSync } from 'effect-errors';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -5,7 +6,6 @@ import { defaultLabelPrefix } from '@constants';
 import { makeConsoleTestLayer } from '@tests/layers';
 import { coverageSummaryFileContentMock } from '@tests/mock-data';
 
-import { Effect, pipe } from 'effect';
 import { getBadgeUrl } from './badge-url.logic.js';
 
 describe('badgeUrl function', () => {
@@ -22,7 +22,7 @@ describe('badgeUrl function', () => {
 
     const result = runSync(
       pipe(
-        getBadgeUrl(summary, 'branches', 'vitest', defaultLabelPrefix),
+        getBadgeUrl(summary, 'branches', 'vitest', defaultLabelPrefix, false),
         Effect.provide(ConsoleTestLayer),
       ),
     );
@@ -41,7 +41,7 @@ describe('badgeUrl function', () => {
 
     const result = runSync(
       pipe(
-        getBadgeUrl(summary, 'lines', 'vitest', defaultLabelPrefix),
+        getBadgeUrl(summary, 'lines', 'vitest', defaultLabelPrefix, false),
         Effect.provide(ConsoleTestLayer),
       ),
     );

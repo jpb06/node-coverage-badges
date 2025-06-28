@@ -1,6 +1,11 @@
 import { Effect, pipe } from 'effect';
 
-import { defaultIcon, defaultLabelPrefix, defaultOutputDir } from '@constants';
+import {
+  defaultDebug,
+  defaultIcon,
+  defaultLabelPrefix,
+  defaultOutputDir,
+} from '@constants';
 import { ensureDirEffect } from '@effects/fs/ensure-dir/index.js';
 import { removeFilesEffect } from '@effects/fs/remove-files/index.js';
 import { coverageKeysArray } from '@types';
@@ -21,6 +26,7 @@ export const generateBadgesFromValuesEffect = (
   outputPath = defaultOutputDir,
   logo = defaultIcon,
   labelPrefix = defaultLabelPrefix,
+  debug = defaultDebug,
 ) =>
   pipe(
     Effect.gen(function* () {
@@ -31,7 +37,13 @@ export const generateBadgesFromValuesEffect = (
 
       yield* Effect.all(
         [...coverageKeysArray, 'total' as const].map(
-          generateCoverageFile(summaryValues, outputPath, logo, labelPrefix),
+          generateCoverageFile(
+            summaryValues,
+            outputPath,
+            logo,
+            labelPrefix,
+            debug,
+          ),
         ),
         { concurrency: 'unbounded' },
       );
