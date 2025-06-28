@@ -32,6 +32,6 @@ export const generateBadgesEffect = (
     ),
     Effect.map(() => true),
     Effect.withSpan('generateBadgesEffect', {
-      attributes: { coverageSummaryPath, outputPath, logo },
+      attributes: { coverageSummaryPath, outputPath, logo, debug },
     }),
   );

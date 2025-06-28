@@ -46,6 +46,7 @@ export const getBadgeUrl = (
         summary,
         key,
         logo,
+        debug,
       },
     }),
   );

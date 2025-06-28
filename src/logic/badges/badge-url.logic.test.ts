@@ -35,7 +35,7 @@ describe('badgeUrl function', () => {
   });
 
   it('should return the badge url', () => {
-    const { ConsoleTestLayer } = makeConsoleTestLayer({});
+    const { ConsoleTestLayer, infoMock } = makeConsoleTestLayer({});
 
     const summary = coverageSummaryFileContentMock(50);
 
@@ -48,6 +48,25 @@ describe('badgeUrl function', () => {
 
     expect(result).toBe(
       'https://img.shields.io/badge/Test%20coverage:%20lines-50%25-red?logo=vitest',
+    );
+    expect(infoMock).toHaveBeenCalledTimes(0);
+  });
+
+  it('should display debug info', () => {
+    const { ConsoleTestLayer, infoMock } = makeConsoleTestLayer({});
+
+    const summary = coverageSummaryFileContentMock(50);
+
+    runSync(
+      pipe(
+        getBadgeUrl(summary, 'lines', 'vitest', defaultLabelPrefix, true),
+        Effect.provide(ConsoleTestLayer),
+      ),
+    );
+
+    expect(infoMock).toHaveBeenCalledTimes(1);
+    expect(infoMock).toHaveBeenCalledWith(
+      '🔹 Generating red badge for lines metric with value [ 50% ].',
     );
   });
 });

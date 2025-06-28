@@ -51,6 +51,7 @@ export const generateCoverageFile =
           outputPath,
           logo,
           key,
+          debug,
         },
       }),
     );
