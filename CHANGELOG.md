@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.1](https://github.com/jpb06/node-coverage-badges/compare/v1.4.0...v1.4.1) (2025-07-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency effect-errors to v1.10.14 ([#112](https://github.com/jpb06/node-coverage-badges/issues/112)) ([8da7887](https://github.com/jpb06/node-coverage-badges/commit/8da7887d9a5abeeb0e53fb9956b09ab3fc543784))
+* readme icons ([#113](https://github.com/jpb06/node-coverage-badges/issues/113)) ([16b9974](https://github.com/jpb06/node-coverage-badges/commit/16b9974b0ecd0174353a523e361c03c36cfa01c8))
+
 ## [1.4.0](https://github.com/jpb06/node-coverage-badges/compare/v1.3.3...v1.4.0) (2025-06-28)
 
 
