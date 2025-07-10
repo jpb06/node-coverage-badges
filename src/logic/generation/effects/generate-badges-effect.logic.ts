@@ -31,22 +31,6 @@ export const generateBadgesEffect = (
 
       return summary;
     }),
-    // Effect.all([
-    //   ensureDirEffect(outputPath),
-    //   removeFilesEffect(outputPath, '.svg'),
-    // ]),
-    // Effect.flatMap(() =>
-    //   readJsonEffect<CoverageSummaryFileContent>(coverageSummaryPath),
-    // ),
-    // Effect.flatMap((summary) =>
-    //   Effect.all(
-    //     [...coverageKeysArray, 'total' as const].map(
-    //       generateCoverageFile(summary, outputPath, logo, labelPrefix, debug),
-    //     ),
-    //     { concurrency: 'unbounded' },
-    //   ),
-    // ),
-    // Effect.map(() => true),
     Effect.withSpan('generateBadgesEffect', {
       attributes: { coverageSummaryPath, outputPath, logo, debug },
     }),
