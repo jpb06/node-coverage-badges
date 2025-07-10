@@ -1,0 +1,543 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`generateBadges function > should generate all badges 1`] = `
+{
+  "./node-coverage-badges/src/constants/default-args.constants.ts": {
+    "branches": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "functions": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "lines": {
+      "covered": 4,
+      "pct": 100,
+      "skipped": 0,
+      "total": 4,
+    },
+    "statements": {
+      "covered": 4,
+      "pct": 100,
+      "skipped": 0,
+      "total": 4,
+    },
+  },
+  "./node-coverage-badges/src/constants/default-icon.constant.ts": {
+    "branches": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "functions": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "lines": {
+      "covered": 2,
+      "pct": 100,
+      "skipped": 0,
+      "total": 2,
+    },
+    "statements": {
+      "covered": 2,
+      "pct": 100,
+      "skipped": 0,
+      "total": 2,
+    },
+  },
+  "./node-coverage-badges/src/constants/summary-keys.constant.ts": {
+    "branches": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "functions": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "lines": {
+      "covered": 6,
+      "pct": 100,
+      "skipped": 0,
+      "total": 6,
+    },
+    "statements": {
+      "covered": 6,
+      "pct": 100,
+      "skipped": 0,
+      "total": 6,
+    },
+  },
+  "./node-coverage-badges/src/effects/fs/ensure-dir/ensure-dir.ts": {
+    "branches": {
+      "covered": 5,
+      "pct": 100,
+      "skipped": 0,
+      "total": 5,
+    },
+    "functions": {
+      "covered": 1,
+      "pct": 100,
+      "skipped": 0,
+      "total": 1,
+    },
+    "lines": {
+      "covered": 20,
+      "pct": 100,
+      "skipped": 0,
+      "total": 20,
+    },
+    "statements": {
+      "covered": 20,
+      "pct": 100,
+      "skipped": 0,
+      "total": 20,
+    },
+  },
+  "./node-coverage-badges/src/effects/fs/read-json/json-parsing.error.ts": {
+    "branches": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "functions": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "lines": {
+      "covered": 3,
+      "pct": 100,
+      "skipped": 0,
+      "total": 3,
+    },
+    "statements": {
+      "covered": 3,
+      "pct": 100,
+      "skipped": 0,
+      "total": 3,
+    },
+  },
+  "./node-coverage-badges/src/effects/fs/read-json/parse-json.ts": {
+    "branches": {
+      "covered": 2,
+      "pct": 100,
+      "skipped": 0,
+      "total": 2,
+    },
+    "functions": {
+      "covered": 1,
+      "pct": 100,
+      "skipped": 0,
+      "total": 1,
+    },
+    "lines": {
+      "covered": 14,
+      "pct": 73.68,
+      "skipped": 0,
+      "total": 19,
+    },
+    "statements": {
+      "covered": 14,
+      "pct": 73.68,
+      "skipped": 0,
+      "total": 19,
+    },
+  },
+  "./node-coverage-badges/src/effects/fs/read-json/read-json.ts": {
+    "branches": {
+      "covered": 2,
+      "pct": 100,
+      "skipped": 0,
+      "total": 2,
+    },
+    "functions": {
+      "covered": 1,
+      "pct": 100,
+      "skipped": 0,
+      "total": 1,
+    },
+    "lines": {
+      "covered": 13,
+      "pct": 100,
+      "skipped": 0,
+      "total": 13,
+    },
+    "statements": {
+      "covered": 13,
+      "pct": 100,
+      "skipped": 0,
+      "total": 13,
+    },
+  },
+  "./node-coverage-badges/src/effects/fs/remove-files/remove-files.ts": {
+    "branches": {
+      "covered": 4,
+      "pct": 100,
+      "skipped": 0,
+      "total": 4,
+    },
+    "functions": {
+      "covered": 1,
+      "pct": 100,
+      "skipped": 0,
+      "total": 1,
+    },
+    "lines": {
+      "covered": 19,
+      "pct": 100,
+      "skipped": 0,
+      "total": 19,
+    },
+    "statements": {
+      "covered": 19,
+      "pct": 100,
+      "skipped": 0,
+      "total": 19,
+    },
+  },
+  "./node-coverage-badges/src/logic/generation/effects/generate-badges-effect.logic.ts": {
+    "branches": {
+      "covered": 3,
+      "pct": 100,
+      "skipped": 0,
+      "total": 3,
+    },
+    "functions": {
+      "covered": 1,
+      "pct": 100,
+      "skipped": 0,
+      "total": 1,
+    },
+    "lines": {
+      "covered": 30,
+      "pct": 100,
+      "skipped": 0,
+      "total": 30,
+    },
+    "statements": {
+      "covered": 30,
+      "pct": 100,
+      "skipped": 0,
+      "total": 30,
+    },
+  },
+  "total": {
+    "branches": {
+      "covered": 16,
+      "pct": 100,
+      "skipped": 0,
+      "total": 16,
+    },
+    "branchesTrue": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "functions": {
+      "covered": 5,
+      "pct": 100,
+      "skipped": 0,
+      "total": 5,
+    },
+    "lines": {
+      "covered": 111,
+      "pct": 95.68,
+      "skipped": 0,
+      "total": 116,
+    },
+    "statements": {
+      "covered": 111,
+      "pct": 95.68,
+      "skipped": 0,
+      "total": 116,
+    },
+  },
+}
+`;
+
+exports[`generateBadges function > should use custom summary path and output dir 1`] = `
+{
+  "./node-coverage-badges/src/constants/default-args.constants.ts": {
+    "branches": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "functions": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "lines": {
+      "covered": 4,
+      "pct": 100,
+      "skipped": 0,
+      "total": 4,
+    },
+    "statements": {
+      "covered": 4,
+      "pct": 100,
+      "skipped": 0,
+      "total": 4,
+    },
+  },
+  "./node-coverage-badges/src/constants/default-icon.constant.ts": {
+    "branches": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "functions": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "lines": {
+      "covered": 2,
+      "pct": 100,
+      "skipped": 0,
+      "total": 2,
+    },
+    "statements": {
+      "covered": 2,
+      "pct": 100,
+      "skipped": 0,
+      "total": 2,
+    },
+  },
+  "./node-coverage-badges/src/constants/summary-keys.constant.ts": {
+    "branches": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "functions": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "lines": {
+      "covered": 6,
+      "pct": 100,
+      "skipped": 0,
+      "total": 6,
+    },
+    "statements": {
+      "covered": 6,
+      "pct": 100,
+      "skipped": 0,
+      "total": 6,
+    },
+  },
+  "./node-coverage-badges/src/effects/fs/ensure-dir/ensure-dir.ts": {
+    "branches": {
+      "covered": 5,
+      "pct": 100,
+      "skipped": 0,
+      "total": 5,
+    },
+    "functions": {
+      "covered": 1,
+      "pct": 100,
+      "skipped": 0,
+      "total": 1,
+    },
+    "lines": {
+      "covered": 20,
+      "pct": 100,
+      "skipped": 0,
+      "total": 20,
+    },
+    "statements": {
+      "covered": 20,
+      "pct": 100,
+      "skipped": 0,
+      "total": 20,
+    },
+  },
+  "./node-coverage-badges/src/effects/fs/read-json/json-parsing.error.ts": {
+    "branches": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "functions": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "lines": {
+      "covered": 3,
+      "pct": 100,
+      "skipped": 0,
+      "total": 3,
+    },
+    "statements": {
+      "covered": 3,
+      "pct": 100,
+      "skipped": 0,
+      "total": 3,
+    },
+  },
+  "./node-coverage-badges/src/effects/fs/read-json/parse-json.ts": {
+    "branches": {
+      "covered": 2,
+      "pct": 100,
+      "skipped": 0,
+      "total": 2,
+    },
+    "functions": {
+      "covered": 1,
+      "pct": 100,
+      "skipped": 0,
+      "total": 1,
+    },
+    "lines": {
+      "covered": 14,
+      "pct": 73.68,
+      "skipped": 0,
+      "total": 19,
+    },
+    "statements": {
+      "covered": 14,
+      "pct": 73.68,
+      "skipped": 0,
+      "total": 19,
+    },
+  },
+  "./node-coverage-badges/src/effects/fs/read-json/read-json.ts": {
+    "branches": {
+      "covered": 2,
+      "pct": 100,
+      "skipped": 0,
+      "total": 2,
+    },
+    "functions": {
+      "covered": 1,
+      "pct": 100,
+      "skipped": 0,
+      "total": 1,
+    },
+    "lines": {
+      "covered": 13,
+      "pct": 100,
+      "skipped": 0,
+      "total": 13,
+    },
+    "statements": {
+      "covered": 13,
+      "pct": 100,
+      "skipped": 0,
+      "total": 13,
+    },
+  },
+  "./node-coverage-badges/src/effects/fs/remove-files/remove-files.ts": {
+    "branches": {
+      "covered": 4,
+      "pct": 100,
+      "skipped": 0,
+      "total": 4,
+    },
+    "functions": {
+      "covered": 1,
+      "pct": 100,
+      "skipped": 0,
+      "total": 1,
+    },
+    "lines": {
+      "covered": 19,
+      "pct": 100,
+      "skipped": 0,
+      "total": 19,
+    },
+    "statements": {
+      "covered": 19,
+      "pct": 100,
+      "skipped": 0,
+      "total": 19,
+    },
+  },
+  "./node-coverage-badges/src/logic/generation/effects/generate-badges-effect.logic.ts": {
+    "branches": {
+      "covered": 3,
+      "pct": 100,
+      "skipped": 0,
+      "total": 3,
+    },
+    "functions": {
+      "covered": 1,
+      "pct": 100,
+      "skipped": 0,
+      "total": 1,
+    },
+    "lines": {
+      "covered": 30,
+      "pct": 100,
+      "skipped": 0,
+      "total": 30,
+    },
+    "statements": {
+      "covered": 30,
+      "pct": 100,
+      "skipped": 0,
+      "total": 30,
+    },
+  },
+  "total": {
+    "branches": {
+      "covered": 16,
+      "pct": 100,
+      "skipped": 0,
+      "total": 16,
+    },
+    "branchesTrue": {
+      "covered": 0,
+      "pct": 100,
+      "skipped": 0,
+      "total": 0,
+    },
+    "functions": {
+      "covered": 5,
+      "pct": 100,
+      "skipped": 0,
+      "total": 5,
+    },
+    "lines": {
+      "covered": 111,
+      "pct": 95.68,
+      "skipped": 0,
+      "total": 116,
+    },
+    "statements": {
+      "covered": 111,
+      "pct": 95.68,
+      "skipped": 0,
+      "total": 116,
+    },
+  },
+}
+`;
