@@ -15,6 +15,7 @@ import {
   makeFsTestLayer,
   makeHttpClientTestLayer,
 } from '@tests/layers';
+import { jsonSummaryMockData } from '@tests/mock-data';
 
 import { generateCoverageFile } from './../coverage-file/generate-coverage-file.logic.js';
 import { generateBadgesEffect } from './generate-badges-effect.logic.js';
@@ -98,12 +99,12 @@ describe('generateBadges function', () => {
     const { FsTestLayer, readFileStringMock } = makeFsTestLayer({
       exists: Effect.succeed(true),
       readDirectory: Effect.succeed([]),
-      readFileString: Effect.succeed('{ "yolo": "bro" }'),
+      readFileString: Effect.succeed(jsonSummaryMockData),
     });
     const { ConsoleTestLayer } = makeConsoleTestLayer({});
     const { HttpClientTestLayer } = makeHttpClientTestLayer({});
 
-    await runPromise(
+    const result = await runPromise(
       pipe(
         generateBadgesEffect(
           defaultSummaryPath,
@@ -121,6 +122,8 @@ describe('generateBadges function', () => {
 
     expect(readFileStringMock).toHaveBeenCalledTimes(1);
     expect(generateCoverageFileCurry).toHaveBeenCalledTimes(5);
+
+    expect(result).toMatchSnapshot();
   });
 
   it('should report on errors', async () => {
@@ -166,13 +169,13 @@ describe('generateBadges function', () => {
     } = makeFsTestLayer({
       exists: Effect.succeed(true),
       readDirectory: Effect.succeed(files),
-      readFileString: Effect.succeed('{}'),
+      readFileString: Effect.succeed(jsonSummaryMockData),
       remove: Effect.void,
     });
     const { ConsoleTestLayer } = makeConsoleTestLayer({});
     const { HttpClientTestLayer } = makeHttpClientTestLayer({});
 
-    await runPromise(
+    const result = await runPromise(
       pipe(
         generateBadgesEffect(
           summaryPath,
@@ -204,5 +207,7 @@ describe('generateBadges function', () => {
       defaultDebug,
     );
     expect(generateCoverageFileCurry).toHaveBeenCalledTimes(5);
+
+    expect(result).toMatchSnapshot();
   });
 });

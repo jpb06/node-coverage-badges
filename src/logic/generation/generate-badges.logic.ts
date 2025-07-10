@@ -1,4 +1,6 @@
 import { FetchHttpClient } from '@effect/platform';
+import type { PlatformError } from '@effect/platform/Error';
+import type { HttpClientError } from '@effect/platform/HttpClientError';
 import { NodeFileSystem } from '@effect/platform-node';
 import { Effect, Layer, pipe } from 'effect';
 
@@ -10,6 +12,8 @@ import {
   defaultSummaryPath,
 } from '@constants';
 import { ConsoleLive } from '@effects/console';
+import type { JsonParsingError } from '@effects/fs/read-json/index.js';
+import type { CoverageSummaryFileContent } from '@types';
 
 import { generateBadgesEffect as program } from './effects/generate-badges-effect.logic.js';
 
@@ -19,7 +23,11 @@ export const generateBadgesEffect = (
   logo = defaultIcon,
   labelPrefix = defaultLabelPrefix,
   debug = defaultDebug,
-) =>
+): Effect.Effect<
+  CoverageSummaryFileContent,
+  PlatformError | JsonParsingError | HttpClientError,
+  never
+> =>
   pipe(
     program(coverageSummaryPath, outputPath, logo, labelPrefix, debug),
     Effect.scoped,
@@ -34,7 +42,7 @@ export const generateBadges = async (
   logo = defaultIcon,
   labelPrefix = defaultLabelPrefix,
   debug = defaultDebug,
-) =>
+): Promise<CoverageSummaryFileContent> =>
   Effect.runPromise(
     generateBadgesEffect(
       coverageSummaryPath,

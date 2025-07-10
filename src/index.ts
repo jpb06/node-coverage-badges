@@ -1,5 +1,9 @@
 /* istanbul ignore file */
-import type { CoverageSummary, FileCoverageTotal } from '@types';
+import type {
+  CoverageSummary,
+  CoverageSummaryFileContent,
+  FileCoverageTotal,
+} from '@types';
 
 import {
   generateBadges,
@@ -17,3 +21,4 @@ export {
   generateBadgesFromValuesEffect,
 };
 export type { CoverageSummary, FileCoverageTotal };
+export type { CoverageSummaryFileContent };

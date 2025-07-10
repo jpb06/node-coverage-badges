@@ -15,22 +15,38 @@ export const generateBadgesEffect = (
   debug: boolean,
 ) =>
   pipe(
-    Effect.all([
-      ensureDirEffect(outputPath),
-      removeFilesEffect(outputPath, '.svg'),
-    ]),
-    Effect.flatMap(() =>
-      readJsonEffect<CoverageSummaryFileContent>(coverageSummaryPath),
-    ),
-    Effect.flatMap((summary) =>
-      Effect.all(
+    Effect.gen(function* () {
+      yield* ensureDirEffect(outputPath);
+      yield* removeFilesEffect(outputPath, '.svg');
+
+      const summary =
+        yield* readJsonEffect<CoverageSummaryFileContent>(coverageSummaryPath);
+
+      yield* Effect.all(
         [...coverageKeysArray, 'total' as const].map(
           generateCoverageFile(summary, outputPath, logo, labelPrefix, debug),
         ),
         { concurrency: 'unbounded' },
-      ),
-    ),
-    Effect.map(() => true),
+      );
+
+      return summary;
+    }),
+    // Effect.all([
+    //   ensureDirEffect(outputPath),
+    //   removeFilesEffect(outputPath, '.svg'),
+    // ]),
+    // Effect.flatMap(() =>
+    //   readJsonEffect<CoverageSummaryFileContent>(coverageSummaryPath),
+    // ),
+    // Effect.flatMap((summary) =>
+    //   Effect.all(
+    //     [...coverageKeysArray, 'total' as const].map(
+    //       generateCoverageFile(summary, outputPath, logo, labelPrefix, debug),
+    //     ),
+    //     { concurrency: 'unbounded' },
+    //   ),
+    // ),
+    // Effect.map(() => true),
     Effect.withSpan('generateBadgesEffect', {
       attributes: { coverageSummaryPath, outputPath, logo, debug },
     }),
