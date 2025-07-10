@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/jpb06/node-coverage-badges/compare/v1.4.1...v1.5.0) (2025-07-10)
+
+
+### Features
+
+* generate badges function returns coverage summary data ([#117](https://github.com/jpb06/node-coverage-badges/issues/117)) ([a62a53b](https://github.com/jpb06/node-coverage-badges/commit/a62a53b741ea58255863eb1f6204c7be36a44b27))
+
 ## [1.4.1](https://github.com/jpb06/node-coverage-badges/compare/v1.4.0...v1.4.1) (2025-07-05)
 
 
