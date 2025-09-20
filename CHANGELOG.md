@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/jpb06/node-coverage-badges/compare/v1.5.0...v1.5.1) (2025-09-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency effect-errors to v1.10.15 ([#127](https://github.com/jpb06/node-coverage-badges/issues/127)) ([0cee3d7](https://github.com/jpb06/node-coverage-badges/commit/0cee3d7aff2a28aa74048f2960034b6bfaa3599d))
+
 ## [1.5.0](https://github.com/jpb06/node-coverage-badges/compare/v1.4.1...v1.5.0) (2025-07-10)
 
 
