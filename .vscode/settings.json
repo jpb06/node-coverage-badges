@@ -19,11 +19,8 @@
 	"[properties]": {
 		"editor.defaultFormatter": "foxundermoon.shell-format"
 	},
-	"[markdown]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"prettier.singleQuote": true,
-		"prettier.semi": true
-	},
 	"typescript.preferences.importModuleSpecifier": "relative",
-	"typescript.preferences.preferTypeOnlyAutoImports": true
+	"[json]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	}
 }

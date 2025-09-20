@@ -1,8 +1,8 @@
-import { summaryKeys } from '@constants';
-import type { CoverageKeysWithTotal, CoverageSummaryFileContent } from '@types';
 import { Effect, pipe } from 'effect';
 
+import { summaryKeys } from '@constants';
 import { Console } from '@effects/console';
+import type { CoverageKeysWithTotal, CoverageSummaryFileContent } from '@types';
 
 const getTotalPercentage = (summary: CoverageSummaryFileContent) => {
   const result =
