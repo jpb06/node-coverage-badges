@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.2](https://github.com/jpb06/node-coverage-badges/compare/v1.6.1...v1.6.2) (2026-01-18)
+
+
+### Bug Fixes
+
+* release workflow permissions ([#172](https://github.com/jpb06/node-coverage-badges/issues/172)) ([162ec54](https://github.com/jpb06/node-coverage-badges/commit/162ec54fb1333f0b39df3a22b7eb5198d807b0e1))
+
 ## [1.6.1](https://github.com/jpb06/node-coverage-badges/compare/v1.6.0...v1.6.1) (2026-01-18)
 
 
