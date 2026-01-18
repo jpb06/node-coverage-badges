@@ -1,24 +1,16 @@
 /* istanbul ignore file */
-import type {
+
+export type {
   CoverageSummary,
   CoverageSummaryFileContent,
   FileCoverageTotal,
 } from '@types';
 
-import {
-  generateBadges,
-  generateBadgesEffect,
-} from './logic/generation/generate-badges.logic.js';
-import {
-  generateBadgesFromValues,
-  generateBadgesFromValuesEffect,
-} from './logic/generation/generate-badges-from-values.logic.js';
-
 export {
   generateBadges,
   generateBadgesEffect,
+} from './logic/generation/generate-badges.logic.js';
+export {
   generateBadgesFromValues,
   generateBadgesFromValuesEffect,
-};
-export type { CoverageSummary, FileCoverageTotal };
-export type { CoverageSummaryFileContent };
+} from './logic/generation/generate-badges-from-values.logic.js';
