@@ -8,6 +8,8 @@ import { getBadgeColor } from './logic/badge-color.logic.js';
 import { getPercentage } from './logic/coverage-percentage.logic.js';
 import { formatColor } from './logic/format-color.js';
 
+const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
+
 export const getBadgeUrl = (
   summary: CoverageSummaryFileContent,
   key: CoverageKeysWithTotal,
@@ -28,8 +30,8 @@ export const getBadgeUrl = (
 
       const prefix = labelPrefix.endsWith(' ')
         ? labelPrefix
-        : `${labelPrefix}: `;
-      const label = encodeURI(`${prefix}${key}`);
+        : `${labelPrefix} `;
+      const label = encodeURI(`${prefix}${capitalize(key)}`);
 
       if (debug) {
         const { info } = yield* Console;
