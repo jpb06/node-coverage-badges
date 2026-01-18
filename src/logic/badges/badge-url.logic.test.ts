@@ -50,7 +50,7 @@ describe('badgeUrl function', () => {
     );
 
     expect(result).toBe(
-      'https://img.shields.io/badge/Test%20coverage:%20lines-50%25-red?logo=vitest',
+      'https://img.shields.io/badge/Test%20coverage%20%E2%80%93%20Lines-50%25-red?logo=vitest',
     );
     expect(infoMock).toHaveBeenCalledTimes(0);
   });
