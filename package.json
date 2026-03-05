@@ -59,7 +59,7 @@
 	},
 	"dependencies": {
 		"comment-json": "4.6.2",
-		"effect-errors": "1.10.22",
+		"effect-errors": "1.10.23",
 		"picocolors": "1.1.1",
 		"yargs": "18.0.0"
 	},
