@@ -68,7 +68,7 @@
 		"effect": "3.x"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.5",
+		"@biomejs/biome": "2.4.7",
 		"@types/node": "25.3.3",
 		"@types/yargs": "17.0.35",
 		"@vitest/coverage-v8": "4.0.18",
